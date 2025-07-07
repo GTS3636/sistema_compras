@@ -1,0 +1,107 @@
+:root {
+    --blue: #01459e;
+    --light-gray: #ddd;
+    --white: #fff;
+    --text-dark: #333;
+    --line: #eee;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+  }
+
+  header {
+    background: var(--blue);
+    color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 150px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  .selectors {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .selectors select {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: var(--white);
+    cursor: pointer;
+  }
+
+  .content {
+    display: flex;
+    background: var(--light-gray);
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 20px;
+  }
+
+  .main {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    text-align: center;
+  }
+
+  .card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-gray);
+    display: inline-block;
+    padding-bottom: 0.2rem;
+  }
+
+  .card p {
+    text-align: left;
+    color: var(--text-dark);
+    margin: 1rem 0;
+    line-height: 1.4;
+  }
+
+  .card p span {
+    display: block;
+    margin: 0.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  footer {
+    background: var(--blue);
+    color: var(--white);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
