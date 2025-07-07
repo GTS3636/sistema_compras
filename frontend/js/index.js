@@ -79,9 +79,10 @@ function controleMenu() {
             `
             document.getElementById("cadastroProduto").addEventListener("click", (e) => {
                 e.preventDefault()
-                changeHead(earlierScript)
-                changeHead(`<script src="./js/cadastroProduto.js" defer></script>`)
-                lastScript = `<script src="./js/cadastroProduto.js" defer></script>`
+                if (!lastScript == `<script src="./js/cadastroProduto.js" defer></script>`) {
+                    changeHead(`<script src="./js/cadastroProduto.js" defer></script>`)
+                    lastScript = `<script src="./js/cadastroProduto.js" defer></script>`
+                }
                 // Aqui você pode adicionar a lógica para cadastrar o produto
             })
         }
