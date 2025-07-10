@@ -7,6 +7,10 @@ const cors = require('cors')
 const PORT = 3000
 const hostname = 'localhost'
 
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use(cors())
+
 const compraController = require('./controller/compra.controller.js')
 const usuarioController = require('./controller/usuario.controller.js')
 const produtoController = require('./controller/produto.controlelr.js')
@@ -30,12 +34,6 @@ app.delete("/produto/:id", produtoController.deletar)
 app.get("/produto/:id", produtoController.consultar)
 
 const conn = require('./db/conn')
-
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
-app.use(cors())
-
-
 
 conn.sync()
 .then(()=>{
