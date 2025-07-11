@@ -38,5 +38,5 @@ const Produto = db.define('produto', {
         type: DataTypes.STRING,
         allowNull: true
     }
-}, {tableName: 'produtos', timestamps: false})
+}, {tableName: 'produto', timestamps: false})
 module.exports = Produto

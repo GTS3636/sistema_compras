@@ -18,13 +18,8 @@ const cadastrar = async (req, res) => {
 const listar = async (req, res) => {
     try {
         const resp = await Compra.findAll()
-        if (resp.length > 0) {
-            res.status(200).json(resp)
-            console.log('Compras encontradas: ', resp)
-        } else {
-            res.status(404).json({ message: 'Nenhuma compra encontrada!' })
-            console.log('Nenhuma compra encontrada!')
-        }
+        res.status(200).json(resp)
+        console.log('Compras encontradas: ', resp)
     } catch (err) {
         console.error("Erro interno do servidor ao listar as compras:", err)
         res.status(500).json({ message: 'Erro interno do servidor ao listar as compras.' })
@@ -37,7 +32,7 @@ const atualizar = async (req, res) => {
         const resp = await Compra.findByPk(id)
         if (resp) {
             await Compra.update(dados, { where: { id: id } })
-            res.status(200).json({ message: 'Compra atualizada com sucesso!' },dados)
+            res.status(200).json({ message: 'Compra atualizada com sucesso!' }, dados)
             console.log('Compra atualizada com sucesso usando os seguintes dados: ', dados)
         } else {
             res.status(404).json({ message: 'Compra não encontrada!' })
@@ -48,26 +43,26 @@ const atualizar = async (req, res) => {
         res.status(500).json({ message: 'Erro interno do servidor ao atualizar a compra.' })
     }
 }
-const deletar = async (req,res)=>{
+const deletar = async (req, res) => {
     const id = req.params.id
-    try{
+    try {
         const resp = Compra.findByPk(id)
         if (resp) {
-            await Compra.destroy({where:{id:id}})
-            res.status(200).json({message:`Compra com o id ${id} deletada com sucesso!`})
+            await Compra.destroy({ where: { id: id } })
+            res.status(200).json({ message: `Compra com o id ${id} deletada com sucesso!` })
             console.log(`Compra com o id ${id} deletada com sucesso!`)
         } else {
-            res.status(404).json({message:`Compra com o id ${id} não encontrada!`})
+            res.status(404).json({ message: `Compra com o id ${id} não encontrada!` })
             console.log(`Compra com o id ${id} deletada com sucesso!`)
         }
-    }catch(err){
+    } catch (err) {
         console.error("Erro interno do servidor ao deletar a compra:", err)
         res.status(500).json({ message: 'Erro interno do servidor ao deletar a compra.' })
     }
 }
-const consultar = async (req,res)=>{
+const consultar = async (req, res) => {
     const id = req.params.id
-    try{
+    try {
         const resp = await Compra.findByPk(id)
         if (resp) {
             res.status(200).json(resp)
@@ -76,9 +71,9 @@ const consultar = async (req,res)=>{
             res.status(404).json({ message: 'Compra não encontrada!' })
             console.log('Compra não encontrada!')
         }
-    }catch(err){
+    } catch (err) {
         console.error("Erro interno do servidor ao consultar a compra:", err)
         res.status(500).json({ message: 'Erro interno do servidor ao consultar a compra.' })
     }
 }
-module.exports = {cadastrar,consultar,atualizar,deletar,listar}
+module.exports = { cadastrar, consultar, atualizar, deletar, listar }

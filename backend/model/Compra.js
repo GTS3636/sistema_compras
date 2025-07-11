@@ -10,7 +10,7 @@ const Compra = db.define("compra",{
         type: DataTypes.INTEGER,
         allowNull: false,
         references:{
-            model: 'usuarios', // Nome da tabela referenciada
+            model: 'usuario', // Nome da tabela referenciada
             key: 'id' // Chave primária da tabela referenciada
         }
     },
@@ -18,7 +18,7 @@ const Compra = db.define("compra",{
         type: DataTypes.INTEGER,
         allowNull: false,
         references:{
-            model: 'produtos',
+            model: 'produto',
             key: 'id'
         }
     },
@@ -43,5 +43,5 @@ const Compra = db.define("compra",{
         allowNull: false,
         defaultValue: 'Pendente' // Pendente, Concluída, Cancelada
     }
-}, {tableName: "compras", timestamps: false})
+}, {tableName: "compra", timestamps: false})
 module.exports = Compra

@@ -22,7 +22,7 @@ const Usuario = db.define("usuario",{
         type: DataTypes.STRING,
         allowNull: false
     },
-    telfone:{
+    telefone:{
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -42,5 +42,5 @@ const Usuario = db.define("usuario",{
         type: DataTypes.DATE,
         allowNull: false
     }
-},{tableName:"usuarios",timestamps: false})
+},{tableName:"usuario",timestamps: false})
 module.exports = Usuario

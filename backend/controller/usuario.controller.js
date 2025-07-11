@@ -18,13 +18,8 @@ const cadastrar = async (req, res) => {
 const listar = async (req, res) => {
     try {
         const resp = await Usuario.findAll()
-        if (resp.length > 0) {
-            res.status(200).json(resp)
-            console.log('Usuários encontrados: ', resp)
-        } else {
-            res.status(404).json({ message: 'Nenhum usuário encontrado!' })
-            console.log('Nenhum usuário encontrado!')
-        }
+        res.status(200).json(resp)
+        console.log('Usuários encontrados: ', resp)
     } catch (err) {
         console.error("Erro interno do servidor ao listar os usuários:", err)
         res.status(500).json({ message: 'Erro interno do servidor ao listar os usuários.' })
@@ -81,4 +76,4 @@ const consultar = async (req, res) => {
         res.status(500).json({ message: 'Erro interno do servidor ao consultar o usuário.' })
     }
 }
-module.exports = {cadastrar,consultar,atualizar,deletar,listar}
+module.exports = { cadastrar, consultar, atualizar, deletar, listar }
