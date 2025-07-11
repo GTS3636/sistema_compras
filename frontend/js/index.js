@@ -1,3 +1,6 @@
+import { exibirGraficoProd } from "./grafico.js"
+import { exibirGraficoUser } from "./grafico.js"
+
 let selectionPages = document.getElementById("selectionPages")
 let selectionServices = document.getElementById("selectionServices")
 
@@ -146,7 +149,18 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Relatório de Produtos</h2><br>
                 <div id="resRelatProd"></div>
+
+                <h2>Gráfico de Produtos</h2><br>
+                <label for="limiteGrafProd">Digite o limite de filtragem do gráfico: </label>
+                <input type="number" id="limiteGrafProd" placeholder="Limite de filtragem do gráfico..." min="1" max="10"><br><br>
+
+                <label for="minGrafProd">Digite o mínimo de filtragem do gráfico: </label>
+                <input type="number" id="minGrafProd" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br><br>
+
+                <button id="exibirGraficoProd">Exibir gráfico</button>
+                <div id="resGrafProd"></div>
             `
+            exibirGraficoProd()
             relatorioProduto()
         }
 
@@ -279,7 +293,18 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Relatório de Usuários</h2><br>
                 <div id="resRelatUsu"></div>
+
+                <h2>Gráfico de Usuários</h2><br>
+                <label for="limiteGrafUser">Digite o limite de filtragem do gráfico: </label>
+                <input type="number" id="limiteGrafUser" placeholder="Limite de filtragem do gráfico..." min="1" max="10"><br><br>
+
+                <label for="minGrafUser">Digite o mínimo de filtragem do gráfico: </label>
+                <input type="number" id="minGrafUser" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br><br>
+
+                <button id="exibirGraficoUser">Exibir gráfico</button>
+                <div id="resGrafUser"></div>
             `
+            exibirGraficoUser()
             relatorioUsuario()
         }
 
@@ -398,7 +423,7 @@ function controleMenu() {
                 <h2>Relatório Consolidado</h2><br>
                 <div id="resRelatCompConsolidado"></div><br>
             `
-            relatorioCompra()
+            relatorioComprasCompleto()
         }
     })
 }
