@@ -1,3 +1,4 @@
+require('dotenv').config()
 const conn = require('./db/conn')
 const { Usuario, Produto, Compra } = require('./model/rel.js')
 async function syncDatabase() {
