@@ -4,7 +4,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     dialect: 'mysql',
     port: 3306
 })
-console.log(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, process.env.DB_HOST, process.env.DB_PORT, process.env.PORT)
 sequelize.authenticate()
 .then(()=>{
     console.log('Conexão realizada com sucesso!')
