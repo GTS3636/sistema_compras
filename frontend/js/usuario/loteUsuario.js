@@ -1,4 +1,4 @@
-function loteUsuarios() {
+export function loteUsuarios() {
     let cadastrarLoteUsuarios = document.getElementById("cadastrarLoteUsuarios")
     let res = document.getElementById("res")
     cadastrarLoteUsuarios.disabled = false
@@ -70,7 +70,7 @@ function loteUsuarios() {
                                     <td>${usuario.endereco}</td>
                                     <td>${usuario.cidade}</td>
                                     <td>${usuario.estado}</td>
-                                    <td>${usuario.dataNascimento}</td>
+                                    <td>${usuario.dataNascimento ? usuario.dataNascimento = new Date(usuario.dataNascimento).toLocaleDateString("pt-BR") : usuario.dataNascimento}</td>
                                 </tr>
                             `
                         })
@@ -90,4 +90,3 @@ function loteUsuarios() {
             })
     })
 }
-export default loteUsuarios

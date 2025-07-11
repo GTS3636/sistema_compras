@@ -1,4 +1,4 @@
-function atualizarCompra() {
+export async function atualizarCompra() {
     let res = document.getElementById("res")
     let selecaoAcao = document.getElementById("selecaoAcao")
 
@@ -70,7 +70,7 @@ function atualizarCompra() {
                                             <td>${compra.idUsuario}</td>
                                             <td>${compra.idProduto}</td>
                                             <td>${compra.quantidade}</td>
-                                            <td>${compra.dataCompra}</td>
+                                            <td>${compra.dataCompra ? compra.dataCompra = new Date().toLocaleDateString("pt-BR") : compra.dataCompra}</td>
                                             <td>${compra.precoUnitario.toFixed(2)}</td>
                                             <td>${compra.formaPagamento}</td>
                                             <td>${compra.status}</td>
@@ -176,4 +176,3 @@ function atualizarCompra() {
         }
     })
 }
-export default atualizarCompra

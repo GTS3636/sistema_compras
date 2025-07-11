@@ -1,4 +1,4 @@
-function excluirCompra() {
+export function excluirCompra() {
     let excluirCompra = document.getElementById("excluirCompra")
     let res = document.getElementById("res")
     excluirCompra.disabled = false
@@ -40,4 +40,3 @@ function excluirCompra() {
             })
     })
 }
-export default excluirCompra

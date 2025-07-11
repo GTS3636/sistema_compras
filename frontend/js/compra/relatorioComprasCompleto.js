@@ -1,4 +1,4 @@
-async function relatorioComprasCompleto() {
+ export async function relatorioComprasCompleto() {
     let resRelatCompras = document.getElementById("resRelatCompras")
     let resRelatCompEstoqCritic = document.getElementById("resRelatCompEstoqCritic")
     let resRelatCompConsolidado = document.getElementById("resRelatCompConsolidado")
@@ -42,7 +42,7 @@ async function relatorioComprasCompleto() {
                     <td>${compra.idUsuario}</td>
                     <td>${compra.idProduto}</td>
                     <td>${compra.quantidade}</td>
-                    <td>${compra.dataCompra}</td>
+                    <td>${compra.dataCompra ? compra.dataCompra = new Date().toLocaleDateString("pt-BR") : compra.dataCompra}</td>
                     <td>${compra.precoUnitario.toFixed(2)}</td>
                     <td>${compra.formaPagamento}</td>
                     <td>${compra.status}</td>
@@ -192,4 +192,3 @@ async function relatorioComprasCompleto() {
             resRelatCompConsolidado.innerHTML = `<p>Erro ao gerar relatório de compras. Tente novamente.</p>`
         })
 }
-export default relatorioComprasCompleto

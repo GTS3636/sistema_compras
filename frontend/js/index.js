@@ -1,5 +1,5 @@
-import { exibirGraficoProd } from "./grafico.js"
-import { exibirGraficoUser } from "./grafico.js"
+import { exibirGraficoProd } from "./graficos.js"
+import { exibirGraficoUser } from "./graficos.js"
 
 import { cadastrarProduto } from "./produto/cadastroProduto.js"	
 import { cadastrarUsuario } from "./usuario/cadastrarUsuario.js"	
@@ -14,7 +14,7 @@ import { listarCompras } from "./compra/listarCompras.js"
 
 import { atualizarProduto } from "./produto/atualizarProduto.js"
 import { atualizarUsuario } from "./usuario/atualizarusuario.js"
-import { atualizarProduto } from "./compra/atualizarCompra.js"
+import { atualizarCompra } from "./compra/atualizarCompra.js"
 
 import { excluirProduto } from "./produto/excluirProduto.js"
 import { excluirUsuario } from "./usuario/excluirUsuario.js"
@@ -113,24 +113,32 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Atualizar Produto</h2>
                 <form id="formAtualizarProduto">
-                    <input type="text" id="idProduto" placeholder="ID do Produto" required><br><br>
-
+                    <label for="idProduto">Digite o COD do produto: </label><br>
+                    <input type="number" id="idProduto" placeholder="ID do Produto" required><br><br>
+                    
+                    <label for="titulo">Digite o titulo do produto: </label><br>
                     <input type="text" name="titulo" placeholder="Novo Título do Produto"><br><br>
-
+                    
+                    <label for="descricao">Digite a descrição do produto: </label><br>
                     <textarea name="descricao" placeholder="Nova Descrição do Produto"></textarea><br><br>
-
+                    
+                    <label for="categoria">Digite a categoria do produto: </label><br>
                     <input type="text" id="categoria" placeholder="Nova Categoria do Produto"><br><br>
-
+                    
+                    <label for="preco">Digite o preco do produto: </label><br>
                     <input type="number" id="preco" placeholder="Novo Preço do Produto" step="0.01"><br><br>
-
+                    
+                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label><br>
                     <input type="number" id="percetualDesconto" placeholder="Novo Percentual de Desconto (opcional)" step="0.01"><br><br>
-
+                    
+                    <label for="estoque">Digite o estoque do produto: </label><br>
                     <input type="number" id="estoque" placeholder="Novo Estoque Disponível"><br><br>
-
+                    
+                    <label for="marca">Digite a marca do produto: </label><br>
                     <input type="text" id="marca" placeholder="Nova Marca do Produto"><br><br>
 
                     <select id="selecaoAcao">
-                        <option value="none">Selecione uma ação</option>
+                        <option value="" disabled selected>Selecione uma ação</option>
                         <option value="consultar">Consultar</option>
                         <option value="atualizar">Atualizar</option>
                     </select><br><br>
@@ -154,7 +162,7 @@ function controleMenu() {
 
         if (page == "produto" && service == "lote") {
             dynamicMenu.innerHTML = `
-                <h2>Gerenciar Lote de Produtos</h2>
+                <h2>Gerenciar Lote de Produtos</h2><br>
                 <button id="cadastrarLote">Cadastrar Lote</button>
                 <div id="res"></div>
             `
@@ -165,7 +173,7 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Consultar Produto</h2>
                 <form id="formConsultarProduto">
-                    <input type="text" id="idProdutoConsultar" placeholder="ID do Produto a ser Consultado..." required><br><br>
+                    <input type="number" id="idProdutoConsultar" placeholder="ID do Produto a ser Consultado..." required><br><br>
                     <button id="consultarProduto">Consultar</button>
                 </form>
                 <div id="res"></div>
@@ -297,7 +305,7 @@ function controleMenu() {
 
         if (page == "usuario" && service == "lote") {
             dynamicMenu.innerHTML = `
-                <h2>Gerenciar Lote de Usuários</h2>
+                <h2>Gerenciar Lote de Usuários</h2><br>
                 <button id="cadastrarLoteUsuarios">Cadastrar Lote</button>
                 <div id="res"></div>
             `
@@ -340,29 +348,33 @@ function controleMenu() {
 
         if (page == "compra" && service == "cadastrar") {
             dynamicMenu.innerHTML = `
-                <h2>Cadastrar Compra</h2>
+                <h2>Cadastrar Compra</h2><br>
                 <form id="formCadastroCompra">
-                    <label for="idUsuario">Digite o COD do usuário: </label><br><br>
+                    <label for="idUsuario">Digite o COD do usuário: </label><br>
                     <input type="number" id="idUsuario" placeholder="ID do Usuário..." required><br><br>
 
-                    <label for="idProduto">Digite o COD do produto: </label><br><br>
+                    <label for="idProduto">Digite o COD do produto: </label><br>
                     <input type="number" id="idProduto" placeholder="ID do Produto..." required><br><br>
 
-                    <label for="quantidade">Digite a quantidade: </label><br><br>
+                    <label for="quantidade">Digite a quantidade: </label><br>
                     <input type="number" id="quantidade" placeholder="Quantidade..." required><br><br>
+
+                    <label for="formaPagamento">Selecione a forma de pagamento da compra: </label><br>
+                    <select id="formaPagamento" required>
+                        <option value="" disabled selected>Selecione uma forma de pagamento...</option>
+                        <option value="cartao">Cartão</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="pix">Pix</option>
+                        <option value="boleto">Boleto</option>
+                    </select><br><br>
                     
-                    <label for="dataCompra">Digite a data da compra: </label><br><br>
-                    <input type="date" id="dataCompra" placeholder="Data da compra..." required><br><br>
-
-                    <label for="precoUnitario">Digite o preço unitário da compra: </label><br><br>
-                    <input type="number" id="precoUnitario" placeholder="Preço unitário..." required><br><br>
-
-                    <label for="formaPagamento">Digite a forma de pagamento da compra: </label><br><br>
-                    <input type="text" id="formaPagamento" placeholder="Forma de pagamento..." required><br><br>
-                    
-                    <label for="status">Digite o status da compra: </label><br><br>
-                    <input type="text" id="status" placeholder="Status..." required><br><br>
-
+                    <label for="status">Selecione o status da compra: </label><br>
+                    <select id="status" required>
+                        <option value="" disabled selected>Selecione um status...</option>
+                        <option value="pendente">Pendente</option>
+                        <option value="aprovada">Aprovada</option>
+                        <option value="finalizada">Finalizada</option>
+                    </select><br><br>
                     <button id="cadastrarCompra">Cadastrar</button>
                 </form><br><br>
                 <div id="res"></div>

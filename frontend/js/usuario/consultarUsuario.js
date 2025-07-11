@@ -1,4 +1,4 @@
-function consultarUsuario() {
+export function consultarUsuario() {
     let consultarUsuario = document.getElementById("consultarUsuario")
     let res = document.getElementById("res")
     consultarUsuario.disabled = false
@@ -50,7 +50,7 @@ function consultarUsuario() {
                                         <td>${usuario.endereco}</td>
                                         <td>${usuario.cidade}</td>
                                         <td>${usuario.estado}</td>
-                                        <td>${usuario.dataNascimento}</td>
+                                        <td>${usuario.dataNascimento ? usuario.dataNascimento = new Date(usuario.dataNascimento).toLocaleDateString("pt-BR") : usuario.dataNascimento}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -70,4 +70,3 @@ function consultarUsuario() {
             })
     })
 }
-export default consultarUsuario

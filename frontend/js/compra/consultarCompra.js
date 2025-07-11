@@ -1,4 +1,4 @@
-function consultarCompra() {
+export function consultarCompra() {
     let consultarCompra = document.getElementById("consultarCompra")
     let res = document.getElementById("res")
     consultarCompra.disabled = false
@@ -6,7 +6,7 @@ function consultarCompra() {
 
     consultarCompra.addEventListener("click", async (e) => {
         e.preventDefault()
-        let idCompraConsultar = document.getElementById("idCompraConsultar").value
+        let idCompraConsultar = Number(document.getElementById("idCompraConsultar").value)
 
         if (!idCompraConsultar) {
             alert("Por favor, informe o ID da compra a ser consultada.")
@@ -45,7 +45,7 @@ function consultarCompra() {
                                         <td>${compra.idUsuario}</td>
                                         <td>${compra.idProduto}</td>
                                         <td>${compra.quantidade}</td>
-                                        <td>${compra.dataCompra}</td>
+                                        <td>${compra.dataCompra ? compra.dataCompra = new Date().toLocaleDateString("pt-BR") : compra.dataCompra}</td>
                                         <td>${compra.precoUnitario.toFixed(2)}</td>
                                         <td>${compra.formaPagamento}</td>
                                         <td>${compra.status}</td>
@@ -68,4 +68,3 @@ function consultarCompra() {
             })
     })
 }
-export default consultarCompra

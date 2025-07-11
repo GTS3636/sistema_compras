@@ -1,4 +1,4 @@
-async function listarProdutos() {
+export async function listarProdutos() {
     let res = document.getElementById("res")
     res.innerHTML = ``
 
@@ -46,7 +46,7 @@ async function listarProdutos() {
                                 <td>${produto.percentualDesconto ? produto.percentualDesconto + "%" : "Não possui desconto"}</td>
                                 <td>${produto.estoque}</td>
                                 <td>${produto.marca || "Sem marca registrada"}</td>
-                                <td><img src="${produto.thumbnail}" alt="${produto.thumbnail}" max-width="75" max-height="60"></td>
+                                <td><img src="${produto.thumbnail}" alt="${produto.thumbnail}" width="75" height="60"></td>
                             </tr>
                         `
                 })
@@ -61,4 +61,3 @@ async function listarProdutos() {
             listarProdutos.disabled = false
         })
 }
-export default listarProdutos

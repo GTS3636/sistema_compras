@@ -1,6 +1,5 @@
-
-function cadastrarCompra() {
-    let cadastroCompra = document.getElementById("cadastroCompra")
+export function cadastrarCompra(e) {
+    let cadastroCompra = document.getElementById("cadastrarCompra")
     let res = document.getElementById("res")
     cadastroCompra.disabled = false
     cadastroCompra.textContent = "Cadastrar"
@@ -8,32 +7,50 @@ function cadastrarCompra() {
     cadastroCompra.addEventListener("click", async (e) => {
         e.preventDefault()
 
-        let idUsuario = document.getElementById("idUsuarioCompra").value
-        let idProduto = document.getElementById("idProdutoCompra").value
+        let idUsuario = document.getElementById("idUsuario").value
+        let idProduto = document.getElementById("idProduto").value
         let quantidade = parseInt(document.getElementById("quantidade").value)
-        let dataCompra = new Date().toISOString().slice(0, 10) || document.getElementById("dataCompra").value // Formato YYYY-MM-DD
         let formaPagamento = document.getElementById("formaPagamento").value
-        let precoUnitario = parseFloat(document.getElementById("precoUnitario").value)
         let status = document.getElementById("status").value
-
 
         if (!idUsuario || !idProduto || !quantidade) {
             alert("Por favor, preencha todos os campos.")
             return
         }
 
-        const valores = {
-            idUsuario: idUsuario,
-            idProduto: idProduto,
-            quantidade: quantidade,
-            dataCompra: dataCompra,
-            formaPagamento: formaPagamento,
-            precoUnitario: precoUnitario,
-            status: status
-        }
-
         cadastroCompra.textContent = "Cadastrando..."
         cadastroCompra.disabled = true
+
+        let estoqueProduto = 0
+        let precoUnitarioProduto = 0
+        let dataAtual = new Date().toLocaleDateString("pt-BR")
+
+        await fetch(`http://localhost:3000/produto/${idProduto}`)
+            .then(resp => {
+                if (!resp.ok) throw new Error("Erro ao receber a resposta no consultar produto")
+                return resp.json()
+            })
+            .then(produto => {
+                estoqueProduto = produto.estoque
+                if (quantidade > estoqueProduto) {
+                    alert("Quantidade solicitada excede o estoque disponível.")
+                    cadastroCompra.textContent = "Cadastrar"
+                    cadastroCompra.disabled = false
+                    quantidade.focus()
+                    throw new Error("Quantidade solicitada excede o estoque disponível.")
+                }
+                precoUnitarioProduto = produto.preco
+            })
+
+        const valores = {
+            usuarioId: idUsuario,
+            produtoId: idProduto,
+            quantidade: quantidade,
+            dataCompra: dataAtual,
+            formaPagamento: formaPagamento,
+            precoUnitario: precoUnitarioProduto,
+            status: status
+        }
 
         await fetch("http://localhost:3000/compra", {
             method: "POST",
@@ -69,7 +86,7 @@ function cadastrarCompra() {
                                         <td>${compra.idUsuario}</td>
                                         <td>${compra.idProduto}</td>
                                         <td>${compra.quantidade}</td>
-                                        <td>${compra.dataCompra}</td>
+                                        <td>${compra.dataCompra ? compra.dataCompra = new Date().toLocaleDateString("pt-BR") : compra.dataCompra}</td>
                                         <td>${compra.precoUnitario}</td>
                                         <td>${compra.formaPagamento}</td>
                                         <td>${compra.status}</td>
@@ -90,4 +107,3 @@ function cadastrarCompra() {
             })
     })
 }
-export default cadastrarCompra

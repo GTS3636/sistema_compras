@@ -1,4 +1,4 @@
-function atualizarUsuario() {
+export function atualizarUsuario() {
     let res = document.getElementById("res")
     let selecaoAcao = document.getElementById("selecaoAcao")
 
@@ -154,7 +154,7 @@ function atualizarUsuario() {
                                         <td>${usuario.endereco}</td>
                                         <td>${usuario.cidade}</td>
                                         <td>${usuario.estado}</td>
-                                        <td>${usuario.dataNascimento}</td>
+                                        <td>${usuario.dataNascimento ? usuario.dataNascimento = new Date().toLocaleDateString("pt-BR") : usuario.dataNascimento}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -179,4 +179,3 @@ function atualizarUsuario() {
         }
     })
 }
-export default atualizarUsuario

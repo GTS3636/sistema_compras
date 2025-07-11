@@ -1,4 +1,4 @@
-async function exibirGraficoProd() {
+export async function exibirGraficoProd() {
     let resGrafProd = document.getElementById("resGrafProd").getContext("2d")
     let exibirGraficoProd = document.getElementById("exibirGraficoProd")
 
@@ -63,7 +63,7 @@ async function exibirGraficoProd() {
     })
 }
 
-async function exibirGraficoUser() {
+export async function exibirGraficoUser() {
     let resGrafUser = document.getElementById("resGrafUser").getContext("2d")
     let exibirGraficoUser = document.getElementById("exibirGraficoUser")
 
@@ -130,5 +130,3 @@ async function exibirGraficoUser() {
         }
     })
 }
-
-export default {exibirGraficoProd, exibirGraficoUser}

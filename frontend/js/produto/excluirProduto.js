@@ -1,4 +1,4 @@
-function excluirProduto() {
+export function excluirProduto() {
     let excluirProduto = document.getElementById("excluirProduto")
     let res = document.getElementById("res")
     excluirProduto.disabled = false
@@ -40,4 +40,3 @@ function excluirProduto() {
             })
     })
 }
-export default excluirProduto

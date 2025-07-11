@@ -1,4 +1,4 @@
-function consultarProduto() {
+export function consultarProduto() {
     let consultarProduto = document.getElementById("consultarProduto")
     let res = document.getElementById("res")
     consultarProduto.disabled = false
@@ -16,14 +16,14 @@ function consultarProduto() {
         consultarProduto.textContent = "Consultando..."
         consultarProduto.disabled = true
 
-        await fetch(`http://localhost:3000/produto/consultar/${idProdutoConsultar}`)
+        await fetch(`http://localhost:3000/produto/${idProdutoConsultar}`)
             .then(resp => {
                 if (!resp.ok) throw new Error("Erro ao receber a resposta no consultar produto")
                 return resp.json()
             })
-            .then(data => {
+            .then(produto => {
                 res.innerHTML = ``
-                if (data) {
+                if (produto) {
                     res.innerHTML = `<h3>Produto Consultado:</h3>`
                     res.innerHTML += `
                     <table border="1">
@@ -70,4 +70,3 @@ function consultarProduto() {
             })
     })
 }
-export default consultarProduto

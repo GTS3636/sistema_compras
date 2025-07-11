@@ -1,4 +1,4 @@
-function excluirUsuario() {
+export function excluirUsuario() {
     let excluirUsuario = document.getElementById("excluirUsuario")
     let res = document.getElementById("res")
     excluirUsuario.disabled = false
@@ -40,4 +40,3 @@ function excluirUsuario() {
             })
     })
 }
-export default excluirUsuario

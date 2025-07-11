@@ -1,4 +1,4 @@
-function cadastrarUsuario() {
+export function cadastrarUsuario() {
     let cadastroUsuario = document.getElementById("cadastroUsuario")
     let res = document.getElementById("res")
     cadastroUsuario.disabled = false
@@ -17,7 +17,7 @@ function cadastrarUsuario() {
         let dataNascimento = document.getElementById("dataNascimento").value
         let email = document.getElementById("email").value
 
-        if (!nome || !email || !senha || !telefone || !endereco || !cidade || !estado || !dataNascimento) {
+        if (!primeiroNome || !segundoNome || !email || !telefone || !endereco || !cidade || !estado || !dataNascimento) {
             alert("Por favor, preencha todos os campos.")
             return
         }
@@ -76,7 +76,7 @@ function cadastrarUsuario() {
                                         <td>${usuario.endereco}</td>
                                         <td>${usuario.cidade}</td>
                                         <td>${usuario.estado}</td>
-                                        <td>${usuario.dataNascimento}</td>
+                                        <td>${usuario.dataNascimento ? usuario.dataNascimento = new Date(usuario.dataNascimento).toLocaleDateString("pt-BR") : usuario.dataNascimento}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -94,4 +94,3 @@ function cadastrarUsuario() {
             })
     })
 }
-export default cadastrarUsuario

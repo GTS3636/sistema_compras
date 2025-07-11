@@ -1,4 +1,4 @@
-async function relatorioProduto() {
+export async function relatorioProduto() {
     let resRelatProd = document.getElementById("resRelatProd")
     resRelatProd.innerHTML = ``
     resRelatProd.innerHTML = `<label>Gerando relatório...</label>`
@@ -41,4 +41,3 @@ async function relatorioProduto() {
             })
         })
 }
-export default relatorioProduto

@@ -1,4 +1,4 @@
-async function relatorioUsuario() {
+export async function relatorioUsuario() {
     let resRelatUsu = document.getElementById("resRelatUsu")
     resRelatUsu.innerHTML = ``
     resRelatUsu.innerHTML = `<label>Gerando relatório...</label>`
@@ -50,4 +50,3 @@ async function relatorioUsuario() {
             resRelatUsu.innerHTML = `<p>Erro ao gerar relatório de usuários. Tente novamente.</p>`
         })
 }
-export default relatorioUsuario

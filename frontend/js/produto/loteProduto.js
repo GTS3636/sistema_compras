@@ -1,5 +1,4 @@
-
-function loteProduto() {
+export function loteProduto() {
     let cadastrarLote = document.getElementById("cadastrarLote")
     let res = document.getElementById("res")
     cadastrarLote.disabled = false
@@ -13,6 +12,7 @@ function loteProduto() {
                 return resp.json()
             })
             .then(data => {
+                console.log(data)
                 cadastrarLote.disabled = true
                 cadastrarLote.textContent = "Cadastrando Lote..."
                 res.innerHTML = ``
@@ -36,7 +36,7 @@ function loteProduto() {
                                 </tbody>
                             </table>
                             `
-                data.forEach(async produto => {
+                data.products.forEach(async produto => {
                     const valores = {
                         titulo: produto.title,
                         descricao: produto.description,
@@ -69,7 +69,7 @@ function loteProduto() {
                                             <td>${produto.percentualDesconto ? produto.percentualDesconto + "%" : "Não possui desconto"}</td>
                                             <td>${produto.estoque}</td>
                                             <td>${produto.marca || "Sem marca registrada"}</td>
-                                            <td><img src="${produto.thumbnail}" alt="${produto.thumbnail}" max-width="75" max-height="60"></td>
+                                            <td><img src="${produto.thumbnail}" alt="${produto.thumbnail}" width="75" height="60"></td>
                                         </tr>
                                     `
                         })
@@ -89,4 +89,3 @@ function loteProduto() {
             })
     })
 }
-export default loteProduto

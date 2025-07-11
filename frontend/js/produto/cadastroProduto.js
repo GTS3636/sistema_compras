@@ -1,4 +1,4 @@
-function cadastrarProduto() {
+export function cadastrarProduto() {
     let cadastroProduto = document.getElementById("cadastroProduto")
     let res = document.getElementById("res")
     cadastroProduto.disabled = false
@@ -11,7 +11,7 @@ function cadastrarProduto() {
         let descricao = document.querySelector("textarea[id='descricao']").value
         let categoria = document.getElementById("categoria").value
         let preco = parseFloat(document.getElementById("preco").value)
-        let percentualDesconto = parseFloat(document.getElementById("percetualDesconto").value) || 0
+        let percentualDesconto = parseFloat(document.getElementById("percetualDesconto").value)
         let estoque = parseInt(document.getElementById("estoque").value)
         let marca = document.getElementById("marca").value
         let thumbnail = document.getElementById("thumbnail").files[0]
@@ -88,4 +88,3 @@ function cadastrarProduto() {
             })
     })
 }
-export default cadastrarProduto

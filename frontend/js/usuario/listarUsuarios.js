@@ -1,5 +1,4 @@
-
-async function listarUsuarios() {
+export async function listarUsuarios() {
     let res = document.getElementById("res")
     res.innerHTML = ``
 
@@ -47,7 +46,7 @@ async function listarUsuarios() {
                                 <td>${usuario.endereco}</td>
                                 <td>${usuario.cidade}</td>
                                 <td>${usuario.estado}</td>
-                                <td>${usuario.dataNascimento}</td>
+                                <td>${usuario.dataNascimento ? usuario.dataNascimento = new Date(usuario.dataNascimento).toLocaleDateString("pt-BR") : usuario.dataNascimento}</td>
                             </tr>
                         `
                 })
@@ -62,4 +61,3 @@ async function listarUsuarios() {
             listarUsuarios.disabled = false
         })
 }
-export default listarUsuarios
