@@ -11,12 +11,10 @@ exibirRelatProd.addEventListener("click", async (e) => {
             } return resp.json()
         })
         .then(dados => {
-            dados.forEach(produto => {
-                resRelatProd.innerHTML = `
+            resRelatProd.innerHTML = `
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Título</th>
                             <th>Categoria</th>
                             <th>Preço</th>
@@ -29,11 +27,11 @@ exibirRelatProd.addEventListener("click", async (e) => {
                     </tbody>
                 </table>
                 `
+            dados.forEach(produto => {
                 let resRelatProdText = document.getElementById("resRelatProdText")
                 resRelatProdText.innerHTML = ``
                 resRelatProdText.innerHTML += `
                 <tr>
-                    <td>${produto.id}</td>
                     <td>${produto.title}</td>
                     <td>${produto.category}</td>
                     <td>${(produto.price).toFixed(2)}</td>
