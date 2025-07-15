@@ -4,16 +4,16 @@ export function atualizarUsuario() {
 
     let primeiroNome = document.getElementById("primeiroNome")
     let segundoNome = document.getElementById("segundoNome")
-    let idade = parseInt(document.getElementById("idade"))
+    let idade = document.getElementById("idade")
     let telefone = document.getElementById("telefone")
     let endereco = document.getElementById("endereco")
     let cidade = document.getElementById("cidade")
     let estado = document.getElementById("estado")
     let dataNascimento = document.getElementById("dataNascimento")
+    let anoAtual = Number(new Date().getFullYear())
 
     primeiroNome.disabled = true
     segundoNome.disabled = true
-    idade.disabled = true
     telefone.disabled = true
     endereco.disabled = true
     cidade.disabled = true
@@ -23,14 +23,15 @@ export function atualizarUsuario() {
     selecaoAcao.addEventListener("change", async (e) => {
         e.preventDefault()
         let idUsuario = document.getElementById("idUsuario").value
+        let optionSelection = selecaoAcao.value
 
-        if (selecaoAcao.value === "consultar" || "atualizar" && !idUsuario) {
+        if ((optionSelection === "consultar" && !idUsuario) || (optionSelection === "atualizar" && !idUsuario)) {
             res.innerHTML = `<p>Por favor, informe o ID do usuário.</p>`
             alert("Por favor, informe o ID do usuário.")
             return
         }
 
-        switch (selecaoAcao.value) {
+        switch (optionSelection) {
             case "none":
                 return
             case "consultar":
@@ -43,12 +44,12 @@ export function atualizarUsuario() {
                         if (usuario) {
                             primeiroNome.value = usuario.primeiroNome
                             segundoNome.value = usuario.segundoNome
-                            idade.valueOf = usuario.idade
+                            idade.value = usuario.dataNascimento ? anoAtual - new Date(usuario.dataNascimento).getFullYear() : ""
                             telefone.value = usuario.telefone
                             endereco.value = usuario.endereco
                             cidade.value = usuario.cidade
                             estado.value = usuario.estado
-                            dataNascimento.value = usuario.dataNascimento
+                            dataNascimento.value = usuario.dataNascimento ? new Date(usuario.dataNascimento).toISOString().split('T')[0] : ""
 
                             res.innerHTML = ``
                             res.innerHTML += `<h3>Usuário Consultado:</h3>`
@@ -77,15 +78,13 @@ export function atualizarUsuario() {
                                         <td>${usuario.endereco}</td>
                                         <td>${usuario.cidade}</td>
                                         <td>${usuario.estado}</td>
-                                        <td>${usuario.dataNascimento}</td>
+                                        <td>${usuario.dataNascimento ? new Date(usuario.dataNascimento).toISOString().split('T')[0] : ""}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             `
-
                             primeiroNome.disabled = false
                             segundoNome.disabled = false
-                            idade.disabled = false
                             telefone.disabled = false
                             endereco.disabled = false
                             cidade.disabled = false
@@ -105,6 +104,7 @@ export function atualizarUsuario() {
                     .finally(() => {
                         selecaoAcao.value = "none"
                     })
+                break
             case "atualizar":
                 const valores = {
                     primeiroNome: primeiroNome.value,
@@ -114,7 +114,7 @@ export function atualizarUsuario() {
                     endereco: endereco.value,
                     cidade: cidade.value,
                     estado: estado.value,
-                    dataNascimento: dataNascimento.value
+                    dataNascimento: dataNascimento.value ? new Date(dataNascimento.value).toISOString().split('T')[0] : dataNascimento.value
                 }
                 await fetch(`http://localhost:3000/usuario/${idUsuario}`, {
                     method: "PUT",
@@ -168,7 +168,7 @@ export function atualizarUsuario() {
                     .finally(() => {
                         primeiroNome.value = ""
                         segundoNome.value = ""
-                        idade.valueOf = ""
+                        idade.value = ""
                         telefone.value = ""
                         endereco.value = ""
                         cidade.value = ""
@@ -176,6 +176,9 @@ export function atualizarUsuario() {
                         dataNascimento.value = ""
                         selecaoAcao.value = "none"
                     })
+                break
+            default:
+                return
         }
     })
 }

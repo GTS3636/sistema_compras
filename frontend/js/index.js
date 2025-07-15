@@ -281,8 +281,8 @@ function controleMenu() {
                     <label for="segundoNome">Digite o segundo do usuário: </label><br><br>
                     <input type="text" id="segundoNome" placeholder="Novo Segundo Nome do Usuário"><br><br>
                     
-                    <label for="idade">Digite a idade do usuário: </label><br><br>
-                    <input type="number" id="idade" placeholder="Nova Idade do Usuário"><br><br>
+                    <label for="idade">A idade do usuário: </label><br><br>
+                    <input type="number" id="idade" placeholder="Nova Idade do Usuário" readonly><br><br>
                     
                     <label for="telefone">Digite o telefone do usuário: </label><br><br>
                     <input type="text" id="telefone" placeholder="Novo Telefone do Usuário"><br><br>
@@ -336,6 +336,9 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Consultar Usuário</h2>
                 <form id="formConsultarUsuario">
+                    <label for="nomeUsuarioConsultar">Digite o nome do usuário a ser consultado: </label><br><br>
+                    <input type="text" id="nomeUsuarioConsultar" placeholder="Nome do Usuário a ser Consultado..." required><br><br>
+
                     <label for="idUsuarioConsultar">Digite o COD do usuário a ser consultado: </label><br><br>
                     <input type="number" id="idUsuarioConsultar" placeholder="COD do Usuário a ser Consultado..." required><br><br>
                     <button id="consultarUsuario">Consultar</button>
@@ -348,17 +351,17 @@ function controleMenu() {
         if (page == "usuario" && service == "relatorio") {
             dynamicMenu.innerHTML = `
                 <h2>Relatório de Usuários</h2><br>
-                <div id="resRelatUsu"></div>
+                <div id="resRelatUsu"></div><br><br><br>
 
                 <h2>Gráfico de Usuários</h2><br>
                 <label for="limiteGrafUser">Digite o limite de filtragem do gráfico: </label>
                 <input type="number" id="limiteGrafUser" placeholder="Limite de filtragem do gráfico..." min="1" max="10"><br><br>
 
                 <label for="minGrafUser">Digite o mínimo de filtragem do gráfico: </label>
-                <input type="number" id="minGrafUser" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br><br>
+                <input type="number" id="minGrafUser" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br>
 
                 <button id="exibirGraficoUser">Exibir gráfico</button>
-                <div id="resGrafUser"></div>
+                <canvas id="resGrafUser"></canvas>
             `
             exibirGraficoUser()
             relatorioUsuario()

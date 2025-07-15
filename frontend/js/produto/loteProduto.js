@@ -12,7 +12,6 @@ export function loteProduto() {
                 return resp.json()
             })
             .then(data => {
-                console.log(data)
                 cadastrarLote.disabled = true
                 cadastrarLote.textContent = "Cadastrando Lote..."
                 res.innerHTML = ``
@@ -59,8 +58,6 @@ export function loteProduto() {
                             return resp.json()
                         })
                         .then(prod => {
-                            console.log(prod)
-                            console.log(prod.percentualDesconto)
                             res.querySelector("#tbodyProdutos").innerHTML += `
                                         <tr>
                                             <td>${prod.id}</td>

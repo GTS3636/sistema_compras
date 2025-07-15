@@ -105,7 +105,8 @@ export function consultarUsuario() {
                     return resp.json()
                 })
                 .then(usuario => {
-                    const usuarioExistente = usuario.find(user => user.titulo.toLowerCase() === nomeUsuarioConsultar.toLowerCase())
+                    const usuarioExistente = usuario.find(user => `${user.primeiroNome} ${user.segundoNome}` === nomeUsuarioConsultar)
+                    console.log(usuarioExistente)
                     if (usuarioExistente) {
                         res.innerHTML = ``
                         res.innerHTML = `<h3>Usuário Consultado:</h3>`
@@ -140,7 +141,7 @@ export function consultarUsuario() {
                             </table>
                     `
                     } else {
-                        res.innerHTML += `<p>Usuário não encontrado.</p>`
+                        res.innerHTML = `<p>Usuário não encontrado.</p>`
                         alert("Usuário não encontrado. Verifique o nome e tente novamente.")
                     }
                 })

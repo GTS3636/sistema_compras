@@ -1,3 +1,4 @@
+let chartProd = null
 export async function exibirGraficoProd() {
     let resGrafProd = document.getElementById("resGrafProd").getContext("2d")
     let exibirGraficoProd = document.getElementById("exibirGraficoProd")
@@ -5,8 +6,12 @@ export async function exibirGraficoProd() {
     exibirGraficoProd.addEventListener("click", async (e) => {
         e.preventDefault()
 
-        let limiteGrafProd = document.getElementById("limiteGrafProd").value
-        let minGrafProd = document.getElementById("minGrafProd").value
+        if (chartProd) {
+            chartProd.destroy()
+        }
+        
+        let limiteGrafProd = Number(document.getElementById("limiteGrafProd").value)
+        let minGrafProd = Number(document.getElementById("minGrafProd").value)
 
         if (limiteGrafProd <= 0 || minGrafProd < 0) {
             alert("Coloque um limite maior que 0 para os produtos")
@@ -35,7 +40,7 @@ export async function exibirGraficoProd() {
                         estoque.push(produtos[i].stock)
                         labels.push(produtos[i].title)
                     }
-                    new Chart(resGrafProd, {
+                    chartProd = new Chart(resGrafProd, {
                         type: 'bar', // Tipo de gráfico (barra)
                         data: {
                             labels: labels,  // Títulos dos produtos no eixo X
@@ -63,15 +68,21 @@ export async function exibirGraficoProd() {
     })
 }
 
+let chartUser = null
 export async function exibirGraficoUser() {
     let resGrafUser = document.getElementById("resGrafUser").getContext("2d")
     let exibirGraficoUser = document.getElementById("exibirGraficoUser")
 
+
     exibirGraficoUser.addEventListener("click", async (e) => {
         e.preventDefault()
 
-        let limiteGrafUser = document.getElementById("limiteGrafUser").value
-        let minGrafUser = document.getElementById("minGrafUser").value
+        if (chartUser) {
+            chartUser.destroy()
+        }
+
+        let limiteGrafUser = Number(document.getElementById("limiteGrafUser").value)
+        let minGrafUser = Number(document.getElementById("minGrafUser").value)
 
         if (limiteGrafUser <= 0 || minGrafUser < 0) {
             alert("Coloque um limite maior que 0")
@@ -83,12 +94,12 @@ export async function exibirGraficoUser() {
             alert("Coloque um mínimo menor que 10")
         }
         else {
-            resGrafUser.clearRect(0, 0, resGrafProd.canvas.width, resGrafProd.canvas.height)
+            resGrafUser.clearRect(0, 0, resGrafUser.canvas.width, resGrafUser.canvas.height)
             // Limpa o canvas antes de desenhar o novo gráfico
             resGrafUser.canvas.width = 400 // Define a largura do canvas
             resGrafUser.canvas.height = 400 // Define a altura do canvas
 
-            await fetch("http://localhost:3000/usuarios") //colocar url dps
+            await fetch("http://localhost:3000/usuario") //colocar url dps
                 .then(resp => {
                     if (!resp.ok) {
                         throw new Error("Erro na resposta do banco de dados.")
@@ -99,11 +110,11 @@ export async function exibirGraficoUser() {
                     let idade = []
 
                     for (let i = 0; i < limiteGrafUser; i++) {
-                        nome.push(`${usuarios[i].fistName} ${usuarios[i].lastName}`)
-                        idade.push(usuarios[i].age)
+                        nome.push(`${usuarios[i].primeiroNome} ${usuarios[i].segundoNome}`)
+                        idade.push(usuarios[i].idade)
                     }
 
-                    new Chart(resGrafUser, {
+                    chartUser = new Chart(resGrafUser, {
                         type: 'bar', // Tipo de gráfico (barra)
                         data: {
                             labels: nome,  // Nome dos usuários no eixo X

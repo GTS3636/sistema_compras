@@ -2,18 +2,19 @@ export async function relatorioUsuario() {
     let resRelatUsu = document.getElementById("resRelatUsu")
     resRelatUsu.innerHTML = ``
     resRelatUsu.innerHTML = `<label>Gerando relatório...</label>`
-    await fetch("http://localhost:3000/usuarios")
+    await fetch("http://localhost:3000/usuario")
         .then(resp => {
             if (!resp.ok) {
                 throw new Error("Erro na resposta do banco de dados.")
             } return resp.json()
         })
         .then(dados => {
-            resRelatUsu.innerHTML = `<h2>Relatório de Usuários</h2><br>`
-            resRelatUsu.innerHTML += `
+            resRelatUsu.innerHTML = ``
+            resRelatUsu.innerHTML = `
                 <table border="1">
                     <thead>
                         <tr>
+                            <th>COD</th>
                             <th>Nome</th>
                             <th>Idade</th>
                             <th>Email</th>
@@ -30,9 +31,9 @@ export async function relatorioUsuario() {
                 `
             dados.forEach(usuario => {
                 let resRelatUsuText = document.getElementById("resRelatUsuText")
-                resRelatUsuText.innerHTML = ``
                 resRelatUsuText.innerHTML += `
                 <tr>
+                    <td>${usuario.id}</td>
                     <td>${usuario.primeiroNome} ${usuario.segundoNome}</td>
                     <td>${usuario.idade}</td>
                     <td>${usuario.email}</td>

@@ -25,7 +25,6 @@ export function excluirUsuario() {
             })
             .then(data => {
                 res.innerHTML = ``
-                res.innerHTML += `<p>${data.message}</p>`
                 res.innerHTML += `<p>Usuário ID ${idUsuarioExcluir} excluído com sucesso!</p>`
                 alert("Usuário excluído com sucesso!")
             })
