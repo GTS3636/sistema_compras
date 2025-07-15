@@ -22,7 +22,7 @@ const Produto = db.define('produto', {
         type: DataTypes.FLOAT,
         allowNull: false
     },
-    percetualDesconto:{
+    percentualDesconto:{
         type: DataTypes.FLOAT,
         allowNull: true
     },
