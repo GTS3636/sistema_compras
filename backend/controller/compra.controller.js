@@ -60,20 +60,4 @@ const deletar = async (req, res) => {
         res.status(500).json({ message: 'Erro interno do servidor ao deletar a compra.' })
     }
 }
-const consultar = async (req, res) => {
-    const id = req.params.id
-    try {
-        const resp = await Compra.findByPk(id)
-        if (resp) {
-            res.status(200).json(resp)
-            console.log('Compra encontrada: ', resp)
-        } else {
-            res.status(404).json({ message: 'Compra não encontrada!' })
-            console.log('Compra não encontrada!')
-        }
-    } catch (err) {
-        console.error("Erro interno do servidor ao consultar a compra:", err)
-        res.status(500).json({ message: 'Erro interno do servidor ao consultar a compra.' })
-    }
-}
-module.exports = { cadastrar, consultar, atualizar, deletar, listar }
+module.exports = { cadastrar, atualizar, deletar, listar }

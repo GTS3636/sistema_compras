@@ -19,7 +19,6 @@ app.post("/compra", compraController.cadastrar)
 app.get("/compra", compraController.listar)
 app.put("/compra/:id", compraController.atualizar)
 app.delete("/compra/:id", compraController.deletar)
-app.get("/compra/:id", compraController.consultar)
 
 app.post("/usuario", usuarioController.cadastrar)
 app.get("/usuario", usuarioController.listar)

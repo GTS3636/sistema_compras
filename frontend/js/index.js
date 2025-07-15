@@ -173,6 +173,10 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Consultar Produto</h2>
                 <form id="formConsultarProduto">
+                    <label for="nomeProdutoConsultar">Digite o nome do produto a ser consultado: </label><br><br>
+                    <input type="text" id="nomeProdutoConsultar" placeholder="Nome do Produto a ser Consultado..." required><br><br>
+
+                    <label for="idProdutoConsultar">Digite o COD do produto a ser consultado: </label><br><br>
                     <input type="number" id="idProdutoConsultar" placeholder="ID do Produto a ser Consultado..." required><br><br>
                     <button id="consultarProduto">Consultar</button>
                 </form>

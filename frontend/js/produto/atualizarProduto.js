@@ -148,7 +148,6 @@ export function atualizarProduto() {
                             </tbody>
                         </table>
                     `
-
                     titulo.disabled = true
                     descricao.disabled = true
                     categoria.disabled = true
@@ -157,7 +156,6 @@ export function atualizarProduto() {
                     estoque.disabled = true
                     marca.disabled = true
                     thumbnail.disabled = true
-
                 })
                 .catch((err) => {
                     console.error("Erro ao atualizar produto:", err)
