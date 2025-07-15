@@ -42,7 +42,7 @@ export function loteProduto() {
                         descricao: produto.description,
                         categoria: produto.category,
                         preco: produto.price,
-                        percentualDesconto: produto.discountPercentage || 0,
+                        percentualDesconto: produto.discountPercentage,
                         estoque: produto.stock,
                         marca: produto.brand || "Sem marca registrada",
                         thumbnail: produto.thumbnail
@@ -58,18 +58,20 @@ export function loteProduto() {
                             if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote")
                             return resp.json()
                         })
-                        .then(produto => {
+                        .then(prod => {
+                            console.log(prod)
+                            console.log(prod.percentualDesconto)
                             res.querySelector("#tbodyProdutos").innerHTML += `
                                         <tr>
-                                            <td>${produto.id}</td>
-                                            <td>${produto.titulo}</td>
-                                            <td>${produto.descricao}</td>
-                                            <td>${produto.categoria}</td>
-                                            <td>R$ ${produto.preco.toFixed(2)}</td>
-                                            <td>${produto.percentualDesconto ? produto.percentualDesconto + "%" : "Não possui desconto"}</td>
-                                            <td>${produto.estoque}</td>
-                                            <td>${produto.marca || "Sem marca registrada"}</td>
-                                            <td><img src="${produto.thumbnail}" alt="${produto.thumbnail}" width="75" height="60"></td>
+                                            <td>${prod.id}</td>
+                                            <td>${prod.titulo}</td>
+                                            <td>${prod.descricao}</td>
+                                            <td>${prod.categoria}</td>
+                                            <td>R$ ${prod.preco.toFixed(2)}</td>
+                                            <td>${prod.percentualDesconto ? parseFloat(prod.percentualDesconto) + "%" : "Não possui desconto"}</td>
+                                            <td>${parseInt(prod.estoque)}</td>
+                                            <td>${prod.marca || "Sem marca registrada"}</td>
+                                            <td><img src="${prod.thumbnail}" alt="${prod.thumbnail}" width="75" height="60"></td>
                                         </tr>
                                     `
                         })

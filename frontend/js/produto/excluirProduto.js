@@ -23,9 +23,8 @@ export function excluirProduto() {
                 if (!resp.ok) throw new Error("Erro ao receber a resposta no excluir produto")
                 return resp.json()
             })
-            .then(data => {
+            .then(() => {
                 res.innerHTML = ``
-                res.innerHTML += `<p>${data.message}</p>`
                 res.innerHTML += `<p>Produto ID ${idProdutoExcluir} excluído com sucesso!</p>`
                 alert("Produto excluído com sucesso!")
             })

@@ -7,7 +7,7 @@ export function consultarProduto() {
     consultarProduto.addEventListener("click", async (e) => {
         e.preventDefault()
         
-        res.innerHTML = `` // Limpa o conteúdo anterior
+        res.innerHTML = ``
         res.innerHTML = `<p>Consultando...</p>`
         
         let idProdutoConsultar = document.getElementById("idProdutoConsultar").value
@@ -88,6 +88,7 @@ export function consultarProduto() {
                 .catch((err) => {
                     console.error("Erro ao consultar produto por COD:", err)
                     alert("Erro ao consultar produto. Verifique o COD e tente novamente.")
+                    res.innerHTML = ``
                 })
                 .finally(() => {
                     consultarProduto.textContent = "Consultar"
@@ -145,6 +146,7 @@ export function consultarProduto() {
                 .catch((err) => {
                     console.error("Erro ao consultar produto por nome:", err)
                     alert("Erro ao consultar produto. Verifique o nome e tente novamente.")
+                    res.innerHTML = ``
                 })
                 .finally(() => {
                     consultarProduto.textContent = "Consultar"

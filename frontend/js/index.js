@@ -1,8 +1,8 @@
 import { exibirGraficoProd } from "./graficos.js"
 import { exibirGraficoUser } from "./graficos.js"
 
-import { cadastrarProduto } from "./produto/cadastroProduto.js"	
-import { cadastrarUsuario } from "./usuario/cadastrarUsuario.js"	
+import { cadastrarProduto } from "./produto/cadastroProduto.js"
+import { cadastrarUsuario } from "./usuario/cadastrarUsuario.js"
 import { cadastrarCompra } from "./compra/cadastrarCompra.js"
 
 import { loteUsuarios } from "./usuario/loteUsuario.js"
@@ -22,7 +22,6 @@ import { excluirCompra } from "./compra/excluirCompra.js"
 
 import { consultarProduto } from "./produto/consultarProduto.js"
 import { consultarUsuario } from "./usuario/consultarUsuario.js"
-import { consultarCompra } from "./compra/consultarCompra.js"
 
 import { relatorioProduto } from "./produto/relatorioProduto.js"
 import { relatorioUsuario } from "./usuario/relatorioUsuario.js"
@@ -51,6 +50,9 @@ function controleMenu() {
             if (selectionServices.querySelector("option[value='lote']")) {
                 selectionServices.querySelector("option[value='lote']").remove()
             }
+            if (selectionServices.querySelector("option[value='consultar']")) {
+                selectionServices.querySelector("option[value='consultar']").remove()
+            }
         }
         else {
             if (!selectionServices.querySelector("option[value='lote']")) {
@@ -58,6 +60,12 @@ function controleMenu() {
                 optionLote.value = "lote"
                 optionLote.textContent = "Lote"
                 selectionServices.appendChild(optionLote)
+            }
+            if (!selectionServices.querySelector("option[value='consultar']")) {
+                let optionConsultar = document.createElement("option")
+                optionConsultar.value = "consultar"
+                optionConsultar.textContent = "Consultar"
+                selectionServices.appendChild(optionConsultar)
             }
         }
     })
@@ -78,23 +86,31 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Cadastrar Produto</h2>
                 <form id="formCadastroProduto">
-                  <input type="text" id="titulo" placeholder="Título do Produto" required><br><br>
+                    <label for="titulo">Digite o título do produto: </label><br>
+                    <input type="text" id="titulo" placeholder="Título do Produto" required><br><br>
+                    
+                    <label for="descricao">Digite a descrição do produto: </label><br>
+                    <textarea id="descricao" placeholder="Descrição do Produto"></textarea><br><br>
+                    
+                    <label for="categoria">Digite a categoria do produto: </label><br>
+                    <input type="text" id="categoria" placeholder="Categoria do Produto" required><br><br>
+                    
+                    <label for="preco">Digite o preço do produto: </label><br>
+                    <input type="number" id="preco" placeholder="Preço do Produto" step="0.01" required><br><br>
+                    
+                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label><br>
+                    <input type="number" id="percetualDesconto" placeholder="Percentual de Desconto (opcional)" step="0.01"><br><br>
+                    
+                    <label for="estoque">Digite o estoque do produto: </label><br>
+                    <input type="number" id="estoque" placeholder="Estoque Disponível" required><br><br>
+                    
+                    <label for="marca">Digite a marca do produto: </label><br>
+                    <input type="text" id="marca" placeholder="Marca do Produto" required><br><br>
+                    
+                    <label for="thumbnail">Digite o link da thumbnail do produto: </label><br>
+                    <input type="text" id="thumbnail" placeholder="Thumbnail do Produto" required><br><br>
 
-                  <textarea id="descricao" placeholder="Descrição do Produto"></textarea><br><br>
-
-                  <input type="text" id="categoria" placeholder="Categoria do Produto" required><br><br>
-
-                  <input type="number" id="preco" placeholder="Preço do Produto" step="0.01" required><br><br>
-
-                  <input type="number" id="percetualDesconto" placeholder="Percentual de Desconto (opcional)" step="0.01"><br><br>
-
-                  <input type="number" id="estoque" placeholder="Estoque Disponível" required><br><br>
-
-                  <input type="text" id="marca" placeholder="Marca do Produto" required><br><br>
-                  
-                  <input type="file" id="thumbnail" required><br><br>
-
-                  <button id="cadastroProduto">Cadastrar</button>
+                    <button id="cadastroProduto">Cadastrar</button>
                 </form>
                 <div id="res"></div>
             `
@@ -188,7 +204,7 @@ function controleMenu() {
         if (page == "produto" && service == "relatorio") {
             dynamicMenu.innerHTML = `
                 <h2>Relatório de Produtos</h2><br>
-                <div id="resRelatProd"></div>
+                <div id="resRelatProd"></div><br><br><br>
 
                 <h2>Gráfico de Produtos</h2><br>
                 <label for="limiteGrafProd">Digite o limite de filtragem do gráfico: </label>
@@ -197,7 +213,7 @@ function controleMenu() {
                 <label for="minGrafProd">Digite o mínimo de filtragem do gráfico: </label>
                 <input type="number" id="minGrafProd" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br><br>
 
-                <button id="exibirGraficoProd">Exibir gráfico</button>
+                <button id="exibirGraficoProd">Exibir gráfico</button><br>
                 <div id="resGrafProd"></div>
             `
             exibirGraficoProd()
@@ -443,26 +459,13 @@ function controleMenu() {
             excluirCompra()
         }
 
-        if (page == "compra" && service == "consultar") {
-            dynamicMenu.innerHTML = `
-                <h2>Consultar Compra</h2>
-                <form id="formConsultarCompra">
-                    <label for="idCompraConsultar">Digite o COD da compra a ser consultada: </label><br><br>
-                    <input type="number" id="idCompraConsultar" placeholder="COD da Compra a ser Consultada..." required><br><br>
-                    <button id="consultarCompra">Consultar</button>
-                </form>
-                <div id="res"></div>
-            `
-            consultarCompra()
-        }
-
         if (page == "compra" && service == "relatorio") {
             dynamicMenu.innerHTML = `
                 <h2>Relatório de Compras</h2><br>
-                <div id="resRelatComp"></div><br><br>
+                <div id="resRelatComp"></div><br><br><br>
 
                 <h2>Relatório de Estoque Crítico</h2><br>
-                <div id="resRelatCompEstoqCritic"></div><br><br>
+                <div id="resRelatCompEstoqCritic"></div><br><br><br>
 
                 <h2>Relatório Consolidado</h2><br>
                 <div id="resRelatCompConsolidado"></div><br>
