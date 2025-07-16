@@ -133,10 +133,10 @@ function controleMenu() {
                     <input type="number" id="idProduto" placeholder="ID do Produto" required><br><br>
                     
                     <label for="titulo">Digite o titulo do produto: </label><br>
-                    <input type="text" name="titulo" placeholder="Novo Título do Produto"><br><br>
+                    <input type="text" id="titulo" placeholder="Novo Título do Produto"><br><br>
                     
                     <label for="descricao">Digite a descrição do produto: </label><br>
-                    <textarea name="descricao" placeholder="Nova Descrição do Produto"></textarea><br><br>
+                    <textarea id="descricao" placeholder="Nova Descrição do Produto"></textarea><br><br>
                     
                     <label for="categoria">Digite a categoria do produto: </label><br>
                     <input type="text" id="categoria" placeholder="Nova Categoria do Produto"><br><br>
@@ -153,8 +153,11 @@ function controleMenu() {
                     <label for="marca">Digite a marca do produto: </label><br>
                     <input type="text" id="marca" placeholder="Nova Marca do Produto"><br><br>
 
+                    <label for="thumbnail">Digite a thumbnail do produto: </label><br>
+                    <input type="text" id="thumbnail" placeholder="Nova Thumbnail do Produto"><br><br>
+
                     <select id="selecaoAcao">
-                        <option value="" disabled selected>Selecione uma ação</option>
+                        <option value="none">Selecione uma ação</option>
                         <option value="consultar">Consultar</option>
                         <option value="atualizar">Atualizar</option>
                     </select><br><br>
@@ -214,7 +217,7 @@ function controleMenu() {
                 <input type="number" id="minGrafProd" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br><br>
 
                 <button id="exibirGraficoProd">Exibir gráfico</button><br>
-                <div id="resGrafProd"></div>
+                <canvas id="resGrafProd"></canvas>
             `
             exibirGraficoProd()
             relatorioProduto()

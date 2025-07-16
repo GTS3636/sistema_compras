@@ -27,7 +27,7 @@ export async function exibirGraficoProd() {
             resGrafProd.canvas.width = 400 // Define a largura do canvas
             resGrafProd.canvas.height = 400 // Define a altura do canvas
 
-            await fetch("http://localhost:3000/produtos") //colocar url dps
+            await fetch("http://localhost:3000/produto") //colocar url dps
                 .then(resp => {
                     if (!resp.ok) {
                         throw new Error("Erro na resposta da API externa.")
@@ -36,9 +36,9 @@ export async function exibirGraficoProd() {
                 .then(produtos => {
                     let estoque = []
                     let labels = []
-                    for (let i = 0; i < limiteGrafProd; i++) {
-                        estoque.push(produtos[i].stock)
-                        labels.push(produtos[i].title)
+                    for (let i = minGrafProd; i < limiteGrafProd; i++) {
+                        estoque.push(produtos[i].estoque)
+                        labels.push(produtos[i].titulo)
                     }
                     chartProd = new Chart(resGrafProd, {
                         type: 'bar', // Tipo de gráfico (barra)
@@ -109,7 +109,7 @@ export async function exibirGraficoUser() {
                     let nome = []
                     let idade = []
 
-                    for (let i = 0; i < limiteGrafUser; i++) {
+                    for (let i = minGrafUser; i < limiteGrafUser; i++) {
                         nome.push(`${usuarios[i].primeiroNome} ${usuarios[i].segundoNome}`)
                         idade.push(usuarios[i].idade)
                     }

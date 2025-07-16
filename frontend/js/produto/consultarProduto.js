@@ -13,8 +13,6 @@ export function consultarProduto() {
         let idProdutoConsultar = document.getElementById("idProdutoConsultar").value
         let nomeProdutoConsultar = document.getElementById("nomeProdutoConsultar").value
 
-        console.log(idProdutoConsultar, nomeProdutoConsultar)
-
         if (nomeProdutoConsultar) {
             if (nomeProdutoConsultar.trim() === "") {
                 alert("Por favor, informe um nome do produto válido a ser consultado.")

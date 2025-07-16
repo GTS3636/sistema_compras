@@ -2,14 +2,14 @@ export function atualizarProduto() {
     let res = document.getElementById("res")
     let selecaoAcao = document.getElementById("selecaoAcao")
 
-    let titulo = document.querySelector("input[name='titulo']")
-    let descricao = document.querySelector("textarea[name='descricao']")
+    let titulo = document.getElementById("titulo")
+    let descricao = document.getElementById("descricao")
     let categoria = document.getElementById("categoria")
     let preco = document.getElementById("preco")
     let percentualDesconto = document.getElementById("percetualDesconto")
     let estoque = document.getElementById("estoque")
     let marca = document.getElementById("marca")
-    let thumbnail = document.getElementById("thumbnail").files[0]
+    let thumbnail = document.getElementById("thumbnail")
 
     titulo.disabled = true
     descricao.disabled = true
@@ -22,16 +22,18 @@ export function atualizarProduto() {
 
     selecaoAcao.addEventListener("change", async (e) => {
         e.preventDefault()
+
         let idProduto = document.getElementById("idProduto").value
-        console.log(idProduto)
 
         if (selecaoAcao.value === "none") {
             return
-        } else if (selecaoAcao.value === "consultar" && !idProduto  || "atualizar" && !idProduto) {
+        } 
+        else if (selecaoAcao.value === "consultar" && !idProduto  || selecaoAcao.value === "atualizar" && !idProduto) {
             res.innerHTML = `<p>Por favor, informe o ID do produto para consulta.</p>`
             alert("Por favor, informe o ID do produto para consulta.")
             return
-        } else if (selecaoAcao.value === "consultar") {
+        } 
+        else if (selecaoAcao.value === "consultar") {
             await fetch(`http://localhost:3000/produto/${idProduto}`)
                 .then(resp => {
                     if (!resp.ok) throw new Error("Erro ao receber a resposta no consultar produto")
@@ -39,7 +41,6 @@ export function atualizarProduto() {
                 })
                 .then(produto => {
                     if (produto) {
-                        console.log(produto)
                         res.innerHTML = `
                              <table border="1">
                                 <thead>
@@ -82,6 +83,7 @@ export function atualizarProduto() {
                     percentualDesconto.disabled = false
                     estoque.disabled = false
                     marca.disabled = false
+                    thumbnail.disabled = false
 
                     marca.value = produto.marca ? produto.marca : "Sem marca registrada"
                     titulo.value = produto.titulo ? produto.titulo : titulo
@@ -90,6 +92,7 @@ export function atualizarProduto() {
                     preco.value = produto.preco ? produto.preco : preco
                     estoque.value = produto.estoque ? produto.estoque : estoque
                     percentualDesconto.value = produto.percentualDesconto ? produto.percentualDesconto : percentualDesconto
+                    thumbnail.value = produto.thumbnail
                 })
                 .catch((err) => {
                     console.error("Erro ao consultar produto:", err)
@@ -98,14 +101,14 @@ export function atualizarProduto() {
         }
         else if (selecaoAcao.value === "atualizar") {
             const valores = {
-                titulo: titulo,
-                descricao: descricao,
-                categoria: categoria,
-                preco: parseFloat(preco),
-                percentualDesconto: percentualDesconto,
-                estoque: parseInt(estoque),
-                marca: marca,
-                thumbnail: thumbnail ? thumbnail.name : null
+                titulo: titulo.value,
+                descricao: descricao.value,
+                categoria: categoria.value,
+                preco: parseFloat(preco.value),
+                percentualDesconto: percentualDesconto.value,
+                estoque: parseInt(estoque.value),
+                marca: marca.value,
+                thumbnail: thumbnail.value ? thumbnail.value : null
             }
             await fetch(`http://localhost:3000/produto/${idProduto}`, {
                 method: "PUT",
@@ -119,6 +122,7 @@ export function atualizarProduto() {
                     return resp.json()
                 })
                 .then(produto => {
+                    console.log(produto)
                     res.innerHTML = `<h3>Produto Atualizado:</h3>`
                     res.innerHTML += `
                         <table border="1">
@@ -132,18 +136,20 @@ export function atualizarProduto() {
                                     <th>Desconto</th>
                                     <th>Estoque</th>
                                     <th>Marca</th>
+                                    <th>Thumbnail</th>
                                 </tr>
                             </thead>
                             <tbody id="tbodyProdutos">
                                 <tr>
-                                    <td>${produto.id}</td>
+                                    <td>${idProduto}</td>
                                     <td>${produto.titulo}</td>
                                     <td>${produto.descricao}</td>
                                     <td>${produto.categoria}</td>
-                                    <td>R$ ${produto.preco.toFixed(2)}</td>
+                                    <td>R$ ${produto.preco}</td>
                                     <td>${produto.percentualDesconto ? produto.percentualDesconto + "%" : "Não possui desconto"}</td>
                                     <td>${produto.estoque}</td>
                                     <td>${produto.marca || "Sem marca registrada"}</td>
+                                    <td>${produto.thumbnail || "Sem thumbnail registrada"}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -162,6 +168,14 @@ export function atualizarProduto() {
                     alert("Erro ao atualizar produto. Verifique os dados e tente novamente.")
                 })
                 .finally(() => {
+                    titulo.value = ""
+                    descricao.value = ""
+                    categoria.value = ""
+                    preco.value = ""
+                    percentualDesconto.value = ""
+                    estoque.value = ""
+                    marca.value = ""
+                    thumbnail.value = ""
                     selecaoAcao.value = "none"
             })
         }

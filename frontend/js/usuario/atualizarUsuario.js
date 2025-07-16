@@ -109,7 +109,7 @@ export function atualizarUsuario() {
                 const valores = {
                     primeiroNome: primeiroNome.value,
                     segundoNome: segundoNome.value,
-                    idade: idade.value,
+                    idade: Number(idade.value),
                     telefone: telefone.value,
                     endereco: endereco.value,
                     cidade: cidade.value,

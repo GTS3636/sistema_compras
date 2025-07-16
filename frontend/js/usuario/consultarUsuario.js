@@ -15,8 +15,6 @@ export function consultarUsuario() {
         let idUsuarioConsultar = document.getElementById("idUsuarioConsultar").value
         let nomeUsuarioConsultar = document.getElementById("nomeUsuarioConsultar").value
 
-        console.log(idUsuarioConsultar, nomeUsuarioConsultar)
-
         if (idUsuarioConsultar) {
             if (isNaN(idUsuarioConsultar)) {
                 alert("Por favor, informe o COD do usuário a ser consultado.")
@@ -106,7 +104,6 @@ export function consultarUsuario() {
                 })
                 .then(usuario => {
                     const usuarioExistente = usuario.find(user => `${user.primeiroNome} ${user.segundoNome}` === nomeUsuarioConsultar)
-                    console.log(usuarioExistente)
                     if (usuarioExistente) {
                         res.innerHTML = ``
                         res.innerHTML = `<h3>Usuário Consultado:</h3>`
