@@ -9,8 +9,7 @@ export async function relatorioProduto() {
             } return resp.json()
         })
         .then(dados => {
-            resRelatProd.innerHTML = `<h2>Relatório de Produtos</h2><br>`
-            resRelatProd.innerHTML += `
+            resRelatProd.innerHTML = `
                 <table border="1">
                     <thead>
                         <tr>

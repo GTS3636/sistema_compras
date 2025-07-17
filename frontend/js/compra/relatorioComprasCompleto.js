@@ -1,4 +1,4 @@
- export async function relatorioComprasCompleto() {
+export async function relatorioComprasCompleto() {
     let resRelatCompras = document.getElementById("resRelatCompras")
     let resRelatCompEstoqCritic = document.getElementById("resRelatCompEstoqCritic")
     let resRelatCompConsolidado = document.getElementById("resRelatCompConsolidado")
@@ -13,8 +13,10 @@
             } return resp.json()
         })
         .then(dados => {
-            resRelatCompras.innerHTML = `<h2>Relatório de Compras</h2><br>`
-            resRelatCompras.innerHTML += `
+            if (dados.length <= 0) {
+                resRelatCompras.innerHTML = `<label>Nenhuma compra cadastrada.</label>`
+            } else {
+                resRelatCompras.innerHTML = `
                 <table border="1">
                     <thead>
                         <tr>
@@ -33,22 +35,22 @@
                     </tbody>
                 </table>
                 `
-            dados.forEach(compra => {
-                let resRelatComprasText = document.getElementById("resRelatComprasText")
-                resRelatComprasText.innerHTML = ``
-                resRelatComprasText.innerHTML += `
-                <tr>
-                    <td>${compra.id}</td>
-                    <td>${compra.idUsuario}</td>
-                    <td>${compra.idProduto}</td>
-                    <td>${compra.quantidade}</td>
-                    <td>${compra.dataCompra ? compra.dataCompra = new Date().toLocaleDateString("pt-BR") : compra.dataCompra}</td>
-                    <td>${compra.precoUnitario.toFixed(2)}</td>
-                    <td>${compra.formaPagamento}</td>
-                    <td>${compra.status}</td>
-                </tr>
-            `
-            })
+                dados.forEach(compra => {
+                    let resRelatComprasText = document.getElementById("resRelatComprasText")
+                    resRelatComprasText.innerHTML += `
+                        <tr>
+                            <td>${compra.id}</td>
+                            <td>${compra.usuarioId}</td>
+                            <td>${compra.produtoId}</td>
+                            <td>${compra.quantidade}</td>
+                            <td>${compra.dataCompra ? new Date().toLocaleDateString("pt-BR") : "-"}</td>
+                            <td>${compra.precoUnitario.toFixed(2)}</td>
+                            <td>${compra.formaPagamento}</td>
+                            <td>${compra.status}</td>
+                        </tr>
+                    `
+                })
+            }
         })
         .catch((err) => {
             console.error("Erro ao gerar relatório de compras:", err)
@@ -66,8 +68,10 @@
             } return resp.json()
         })
         .then(dados => {
-            resRelatCompEstoqCritic.innerHTML = `<h2>Relatório de Estoque Crítico</h2><br>`
-            resRelatCompEstoqCritic.innerHTML += `
+            if (dados.length <= 0) {
+                resRelatCompEstoqCritic.innerHTML = `<label>Nenhuma compra cadastrada.</label>`
+            } else {
+                resRelatCompEstoqCritic.innerHTML = `
                 <table border="1">
                     <thead>
                         <tr>
@@ -82,23 +86,30 @@
                     </tbody>
                 </table>
                 `
-            dados.forEach(produto => {
-                if (produto.estoque <= 10) {
-                    // Considerando estoque crítico quando a quantidade é menor ou igual a 10
-                    let resRelatEstoqCriticText = document.getElementById("resRelatEstoqCriticText")
-                    resRelatEstoqCriticText.innerHTML += `
-                    <tr>
-                        <td>${produto.id}</td>
-                        <td>${produto.titulo}</td>
-                        <td>${produto.estoque}</td>
-                        <td>${produto.preco.toFixed(2)}</td>
-                    </tr>
-                `
+                if (!dados.filter(prod => prod.quantidade <= 10)) {
+                    resRelatCompEstoqCritic.innerHTML = `<label>Não foi encontrado nenhum produto com estoque crítico.</label>`
+                    return
+                } else {
+                    dados.forEach(async compra => {
+
+                        try {
+                            const respProduto = await fetch(`http://localhost:3000/produto/${compra.produtoId}`)
+                            const produto = await respProduto.json()
+                            let resRelatEstoqCriticText = document.getElementById("resRelatEstoqCriticText")
+                            resRelatEstoqCriticText.innerHTML += `
+                                <tr>
+                                    <td>${produto.id}</td>
+                                    <td>${produto.titulo}</td>
+                                    <td>${produto.estoque}</td>
+                                    <td>${produto.preco}</td>
+                                </tr>
+                            `
+                        } catch (err) {
+                            console.error("Erro ao consultar o produto no estoque crítico")
+                        }
+                    })
                 }
-                if (!produto.estoque.find(estoque => estoque <= 10)) {
-                    resRelatCompEstoqCritic.innerHTML = `<p>Não foi encontrado nenhum produto com estoque crítico.</p>`
-                }
-            })
+            }
         })
         .catch((err) => {
             console.error("Erro ao gerar relatório de estoque crítico:", err)
@@ -109,18 +120,17 @@
     resRelatCompConsolidado.innerHTML = ``
     resRelatCompConsolidado.innerHTML = `<label>Gerando relatório...</label>`
 
-    let nomeUsuario = ""
-    let nomeProduto = ""
-
     await fetch("http://localhost:3000/compra")
         .then(resp => {
             if (!resp.ok) {
                 throw new Error("Erro na resposta do banco de dados.")
             } return resp.json()
         })
-        .then(dados => {
-            resRelatCompConsolidado.innerHTML = `<h2>Relatório de Compras</h2><br>`
-            resRelatCompConsolidado.innerHTML += `
+        .then(async dados => {
+            if (dados.length <= 0) {
+                resRelatCompConsolidado.innerHTML = `<label>Nenhuma compra cadastrada.</label>`
+            } else {
+                resRelatCompConsolidado.innerHTML = `
             <table border="1">
                 <thead>
                     <tr>
@@ -133,58 +143,43 @@
                         <th>Valor Final</th>
                     </tr>
                 </thead>
-                <tbody id="resRelatComprasText">
+                <tbody id="resRelatCompConsolidadoText">
 
                 </tbody>
             </table>
             `
-            dados.forEach(async compra => {
-                await fetch(`http://localhost:3000/usuario/${compra.idUsuario}`)
-                    .then(resp => {
-                        if (!resp.ok) throw new Error("Erro ao receber a resposta no consultar usuário")
-                        return resp.json()
-                    })
-                    .then(usuario => {
-                        if (usuario) {
-                            nomeUsuario = `${usuario.primeiroNome} ${usuario.segundoNome}`
-                        } else {
-                            nomeUsuario = "Usuário não encontrado"
-                        }
-                    })
-                    .catch((err) => {
-                        console.error("Erro ao consultar usuário:", err)
-                    })
+                for (const compra of dados) {
+                    let nomeUsuario = ""
+                    let nomeProduto = ""
+                    try {
+                        const respUsuario = await fetch(`http://localhost:3000/usuario/${compra.usuarioId}`)
+                        const usuario = await respUsuario.json()
+                        nomeUsuario = `${usuario.primeiroNome} ${usuario.segundoNome}`
+                    } catch {
+                        nomeUsuario = "Usuário não encontrado"
+                    }
+                    try {
+                        const respProduto = await fetch(`http://localhost:3000/produto/${compra.produtoId}`)
+                        const produto = await respProduto.json()
+                        nomeProduto = produto.titulo
+                    } catch {
+                        nomeProduto = "Produto não encontrado"
+                    }
+                    let resRelatCompConsolidadoText = document.getElementById("resRelatCompConsolidadoText")
+                    resRelatCompConsolidadoText.innerHTML += `
+                        <tr>
+                            <td>${nomeUsuario}</td>
+                            <td>${nomeProduto}</td>
+                            <td>${compra.quantidade}</td>
+                            <td>${compra.dataCompra ? new Date(compra.dataCompra).toLocaleDateString("pt-BR") : "-"}</td>
+                            <td>${compra.formaPagamento}</td>
+                            <td>${compra.status}</td>
+                            <td>${(compra.precoUnitario * compra.quantidade).toFixed(2)}</td>
+                        </tr>
+                    `
+                }
 
-                await fetch(`http://localhost:3000/produto/${compra.idProduto}`)
-                    .then(resp => {
-                        if (!resp.ok) throw new Error("Erro ao receber a resposta no consultar produto")
-                        return resp.json()
-                    })
-                    .then(produto => {
-                        if (produto) {
-                            nomeProduto = produto.titulo
-                        } else {
-                            nomeProduto = "Produto não encontrado"
-                        }
-                    })
-                    .catch((err)=>{
-                        console.error("Erro ao consultar produto:", err)
-                    })
-
-                let resRelatComprasText = document.getElementById("resRelatComprasText")
-                resRelatComprasText.innerHTML = ``
-                resRelatComprasText.innerHTML += `
-                    <tr>
-                        <td>${nomeUsuario}</td>
-                        <td>${nomeProduto}</td>
-                        <td>${compra.quantidade}</td>
-                        <td>${compra.dataCompra}</td>
-                        <td>${compra.formaPagamento}</td>
-                        <td>${compra.status}</td>
-                        <td>${(compra.precoUnitario * compra.quantidade).toFixed(2)}</td>
-                    </tr>
-                `
-            })
+            }
         })
         .catch((err) => {
             console.error("Erro ao gerar relatório de compras:", err)

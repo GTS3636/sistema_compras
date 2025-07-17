@@ -32,7 +32,6 @@ export function cadastrarCompra(e) {
             })
             .then(produto => {
                 estoqueProduto = produto.estoque
-                console.log("Estoque produto antes da subtração: ", estoqueProduto)
                 if (quantidade > estoqueProduto) {
                     alert("Quantidade solicitada excede o estoque disponível.")
                     cadastroCompra.textContent = "Cadastrar"
@@ -102,7 +101,6 @@ export function cadastrarCompra(e) {
                             </table>
                 `
                 estoqueProduto -= quantidade
-                console.log("Estoque produto depois da subtração: ",estoqueProduto)
                 await fetch(`http://localhost:3000/produto/${idProduto}`,{
                     method: "PUT",
                     headers:{ "Content-Type":"application/json" },
@@ -111,9 +109,6 @@ export function cadastrarCompra(e) {
                     .then(resp => {
                         if (!resp.ok) throw new Error("Erro ao receber a resposta no atualizar o estoque do produto")
                         return resp.json()
-                    })
-                    .then(produto => {
-                        console.log("Produto atualizado: ",produto)
                     })
                     .catch((err)=>{
                         console.error("Erro no fetch de atualizar o estoque do produto: ",err)

@@ -6,10 +6,10 @@ export function consultarProduto() {
 
     consultarProduto.addEventListener("click", async (e) => {
         e.preventDefault()
-        
+
         res.innerHTML = ``
         res.innerHTML = `<p>Consultando...</p>`
-        
+
         let idProdutoConsultar = document.getElementById("idProdutoConsultar").value
         let nomeProdutoConsultar = document.getElementById("nomeProdutoConsultar").value
 
@@ -152,6 +152,10 @@ export function consultarProduto() {
                     document.getElementById("idProdutoConsultar").value = ""
                     document.getElementById("nomeProdutoConsultar").value = ""
                 })
+        } else {
+            consultarProduto.textContent = "Consultar"
+            consultarProduto.disabled = false
+            res.innerHTML = `<label>Por favor, insira ao menos um critério para pesquisa.</label>`
         }
     })
 }

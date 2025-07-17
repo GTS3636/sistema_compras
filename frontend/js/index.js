@@ -86,31 +86,31 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Cadastrar Produto</h2>
                 <form id="formCadastroProduto">
-                    <label for="titulo">Digite o título do produto: </label><br>
-                    <input type="text" id="titulo" placeholder="Título do Produto" required><br><br>
+                    <label for="titulo">Digite o título do produto: </label>
+                    <input type="text" id="titulo" placeholder="Título do Produto" required><br>
                     
-                    <label for="descricao">Digite a descrição do produto: </label><br>
-                    <textarea id="descricao" placeholder="Descrição do Produto"></textarea><br><br>
+                    <label for="descricao">Digite a descrição do produto: </label>
+                    <textarea id="descricao" placeholder="Descrição do Produto"></textarea><br>
                     
-                    <label for="categoria">Digite a categoria do produto: </label><br>
-                    <input type="text" id="categoria" placeholder="Categoria do Produto" required><br><br>
+                    <label for="categoria">Digite a categoria do produto: </label>
+                    <input type="text" id="categoria" placeholder="Categoria do Produto" required><br>
                     
-                    <label for="preco">Digite o preço do produto: </label><br>
-                    <input type="number" id="preco" placeholder="Preço do Produto" step="0.01" required><br><br>
+                    <label for="preco">Digite o preço do produto: </label>
+                    <input type="number" id="preco" placeholder="Preço do Produto" step="0.01" required><br>
                     
-                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label><br>
-                    <input type="number" id="percetualDesconto" placeholder="Percentual de Desconto (opcional)" step="0.01"><br><br>
+                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label><
+                    <input type="number" id="percetualDesconto" placeholder="Percentual de Desconto (opcional)" step="0.01"><br>
                     
-                    <label for="estoque">Digite o estoque do produto: </label><br>
-                    <input type="number" id="estoque" placeholder="Estoque Disponível" required><br><br>
+                    <label for="estoque">Digite o estoque do produto: </label>
+                    <input type="number" id="estoque" placeholder="Estoque Disponível" required><br>
                     
-                    <label for="marca">Digite a marca do produto: </label><br>
-                    <input type="text" id="marca" placeholder="Marca do Produto" required><br><br>
+                    <label for="marca">Digite a marca do produto: </label>
+                    <input type="text" id="marca" placeholder="Marca do Produto" required><br>
                     
-                    <label for="thumbnail">Digite o link da thumbnail do produto: </label><br>
-                    <input type="text" id="thumbnail" placeholder="Thumbnail do Produto" required><br><br>
+                    <label for="thumbnail">Digite o link da thumbnail do produto: </label>
+                    <input type="text" id="thumbnail" placeholder="Thumbnail do Produto" required><br>
 
-                    <button id="cadastroProduto">Cadastrar</button>
+                    <button id="cadastroProduto">Cadastrar</button><br>
                 </form>
                 <div id="res"></div>
             `
@@ -129,38 +129,38 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Atualizar Produto</h2>
                 <form id="formAtualizarProduto">
-                    <label for="idProduto">Digite o COD do produto: </label><br>
-                    <input type="number" id="idProduto" placeholder="ID do Produto" min="1" required><br><br>
+                    <label for="idProduto">Digite o COD do produto: </label>
+                    <input type="number" id="idProduto" placeholder="ID do Produto" min="1" required><br>
                     
-                    <label for="titulo">Digite o titulo do produto: </label><br>
-                    <input type="text" id="titulo" placeholder="Novo Título do Produto"><br><br>
+                    <label for="titulo">Digite o titulo do produto: </label>
+                    <input type="text" id="titulo" placeholder="Novo Título do Produto"><br>
                     
-                    <label for="descricao">Digite a descrição do produto: </label><br>
-                    <textarea id="descricao" placeholder="Nova Descrição do Produto"></textarea><br><br>
+                    <label for="descricao">Digite a descrição do produto: </label>
+                    <textarea id="descricao" placeholder="Nova Descrição do Produto"></textarea><br>
                     
-                    <label for="categoria">Digite a categoria do produto: </label><br>
-                    <input type="text" id="categoria" placeholder="Nova Categoria do Produto"><br><br>
+                    <label for="categoria">Digite a categoria do produto: </label>
+                    <input type="text" id="categoria" placeholder="Nova Categoria do Produto"><br>
                     
-                    <label for="preco">Digite o preco do produto: </label><br>
-                    <input type="number" id="preco" placeholder="Novo Preço do Produto" min="0" step="0.01"><br><br>
+                    <label for="preco">Digite o preco do produto: </label>
+                    <input type="number" id="preco" placeholder="Novo Preço do Produto" min="0" step="0.01"><br>
                     
-                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label><br>
-                    <input type="number" id="percetualDesconto" placeholder="Novo Percentual de Desconto (opcional)" step="0.01"><br><br>
+                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label>
+                    <input type="number" id="percetualDesconto" placeholder="Novo Percentual de Desconto (opcional)" step="0.01"><br>
                     
-                    <label for="estoque">Digite o estoque do produto: </label><br>
-                    <input type="number" id="estoque" placeholder="Novo Estoque Disponível" min="1"><br><br>
+                    <label for="estoque">Digite o estoque do produto: </label>
+                    <input type="number" id="estoque" placeholder="Novo Estoque Disponível" min="1"><br>
                     
-                    <label for="marca">Digite a marca do produto: </label><br>
-                    <input type="text" id="marca" placeholder="Nova Marca do Produto"><br><br>
+                    <label for="marca">Digite a marca do produto: </label>
+                    <input type="text" id="marca" placeholder="Nova Marca do Produto"><br>
 
-                    <label for="thumbnail">Digite a thumbnail do produto: </label><br>
-                    <input type="text" id="thumbnail" placeholder="Nova Thumbnail do Produto"><br><br>
+                    <label for="thumbnail">Digite a thumbnail do produto: </label>
+                    <input type="text" id="thumbnail" placeholder="Nova Thumbnail do Produto"><br>
 
                     <select id="selecaoAcao">
                         <option value="none">Selecione uma ação</option>
                         <option value="consultar">Consultar</option>
                         <option value="atualizar">Atualizar</option>
-                    </select><br><br>
+                    </select><br>
                 </form>
                 <div id="res"></div>
             `
@@ -171,7 +171,7 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Excluir Produto</h2>
                 <form id="formExcluirProduto">
-                    <input type="number" id="idProdutoExcluir" placeholder="COD do Produto a ser Excluído..." min="1" required><br><br>
+                    <input type="number" id="idProdutoExcluir" placeholder="COD do Produto a ser Excluído..." min="1" required><br>
                     <button id="excluirProduto">Excluir</button>
                 </form>
                 <div id="res"></div>
@@ -181,7 +181,7 @@ function controleMenu() {
 
         if (page == "produto" && service == "lote") {
             dynamicMenu.innerHTML = `
-                <h2>Gerenciar Lote de Produtos</h2><br>
+                <h2>Gerenciar Lote de Produtos</h2>
                 <button id="cadastrarLote">Cadastrar Lote</button>
                 <div id="res"></div>
             `
@@ -192,11 +192,11 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Consultar Produto</h2>
                 <form id="formConsultarProduto">
-                    <label for="nomeProdutoConsultar">Digite o nome do produto a ser consultado: </label><br><br>
-                    <input type="text" id="nomeProdutoConsultar" placeholder="Nome do Produto a ser Consultado..." min="1" required><br><br>
+                    <label for="nomeProdutoConsultar">Digite o nome do produto a ser consultado: </label>
+                    <input type="text" id="nomeProdutoConsultar" placeholder="Nome do Produto a ser Consultado..." min="1" required><br>
 
-                    <label for="idProdutoConsultar">Digite o COD do produto a ser consultado: </label><br><br>
-                    <input type="number" id="idProdutoConsultar" placeholder="ID do Produto a ser Consultado..." required><br><br>
+                    <label for="idProdutoConsultar">Digite o COD do produto a ser consultado: </label>
+                    <input type="number" id="idProdutoConsultar" placeholder="ID do Produto a ser Consultado..." required><br>
                     <button id="consultarProduto">Consultar</button>
                 </form>
                 <div id="res"></div>
@@ -206,17 +206,17 @@ function controleMenu() {
 
         if (page == "produto" && service == "relatorio") {
             dynamicMenu.innerHTML = `
-                <h2>Relatório de Produtos</h2><br>
-                <div id="resRelatProd"></div><br><br><br>
+                <h2>Relatório de Produtos</h2>
+                <div id="resRelatProd"></div><br>
 
-                <h2>Gráfico de Produtos</h2><br>
+                <h2>Gráfico de Produtos</h2>
                 <label for="limiteGrafProd">Digite o limite de filtragem do gráfico: </label>
-                <input type="number" id="limiteGrafProd" placeholder="Limite de filtragem do gráfico..." min="1" max="10"><br><br>
+                <input type="number" id="limiteGrafProd" placeholder="Limite de filtragem do gráfico..." min="1" max="10">
 
                 <label for="minGrafProd">Digite o mínimo de filtragem do gráfico: </label>
-                <input type="number" id="minGrafProd" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br><br>
+                <input type="number" id="minGrafProd" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10">
 
-                <button id="exibirGraficoProd">Exibir gráfico</button><br>
+                <button id="exibirGraficoProd">Exibir gráfico</button>
                 <canvas id="resGrafProd"></canvas>
             `
             exibirGraficoProd()
@@ -229,35 +229,35 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Cadastrar Usuário</h2>
                 <form id="formCadastroUsuario">
-                    <label for="primeiroNome">Digite o primeiro nome do usuário: </label><br><br>
-                    <input type="text" id="primeiroNome" placeholder="Primeiro nome do Usuário..." required><br><br>
+                    <label for="primeiroNome">Digite o primeiro nome do usuário: </label>
+                    <input type="text" id="primeiroNome" placeholder="Primeiro nome do Usuário..." required>
 
-                    <label for="segundoNome">Digite o segundo nome do usuário: </label><br><br>
-                    <input type="text" id="segundoNome" placeholder="Segundo nome do Usuário..." required><br><br>
+                    <label for="segundoNome">Digite o segundo nome do usuário: </label>
+                    <input type="text" id="segundoNome" placeholder="Segundo nome do Usuário..." required>
                     
-                    <label for="idade">Digite a idade do usuário: </label><br><br>
-                    <input type="number" id="idade" placeholder="Idade do Usuário..." required><br><br>
+                    <label for="idade">Digite a idade do usuário: </label>
+                    <input type="number" id="idade" placeholder="Idade do Usuário..." required>
                     
-                    <label for="telefone">Digite o telefone do usuário: </label><br><br>
-                    <input type="text" id="telefone" placeholder="Telefone do Usuário..." required><br><br>
+                    <label for="telefone">Digite o telefone do usuário: </label>
+                    <input type="text" id="telefone" placeholder="Telefone do Usuário..." required>
                     
-                    <label for="endereco">Digite o endereço do usuário: </label><br><br>
-                    <input type="text" id="endereco" placeholder="Endereço do Usuário..." required><br><br>
+                    <label for="endereco">Digite o endereço do usuário: </label>
+                    <input type="text" id="endereco" placeholder="Endereço do Usuário..." required>
                     
-                    <label for="cidade">Digite a cidade do usuário: </label><br><br>
-                    <input type="text" id="cidade" placeholder="Cidade do Usuário..." required><br><br>
+                    <label for="cidade">Digite a cidade do usuário: </label>
+                    <input type="text" id="cidade" placeholder="Cidade do Usuário..." required>
                     
-                    <label for="estado">Digite o estado do usuário: </label><br><br>
-                    <input type="text" id="estado" placeholder="Estado do Usuário..." required><br><br>
+                    <label for="estado">Digite o estado do usuário: </label>
+                    <input type="text" id="estado" placeholder="Estado do Usuário..." required>
                     
-                    <label for="dataNascimento">Digite a data de nascimento do usuário: </label><br><br>
-                    <input type="date" id="dataNascimento" placeholder="Data de nascimento do Usuário..." required><br><br>
+                    <label for="dataNascimento">Digite a data de nascimento do usuário: </label>
+                    <input type="date" id="dataNascimento" placeholder="Data de nascimento do Usuário..." required>
                     
-                    <label for="email">Digite o email do usuário: </label><br><br>
-                    <input type="email" id="email" placeholder="Email do Usuário" required><br><br>
+                    <label for="email">Digite o email do usuário: </label>
+                    <input type="email" id="email" placeholder="Email do Usuário" required>
 
                     <button id="cadastroUsuario">Cadastrar</button>
-                </form><br><br>
+                </form><br>
                 <div id="res"></div>
             `
             cadastrarUsuario()
@@ -275,38 +275,38 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Atualizar Usuário</h2>
                 <form id="formAtualizarUsuario">
-                    <label for="idUsuario">Digite o COD do usuário: </label><br><br>
-                    <input type="number" id="idUsuario" placeholder="ID do Usuário" min="1" required><br><br>
+                    <label for="idUsuario">Digite o COD do usuário: </label>
+                    <input type="number" id="idUsuario" placeholder="ID do Usuário" min="1" required>
                     
-                    <label for="primeiroNome">Digite o primeiro do usuário: </label><br><br>
-                    <input type="text" id="primeiroNome" placeholder="Novo Primeiro Nome do Usuário"><br><br>
+                    <label for="primeiroNome">Digite o primeiro do usuário: </label>
+                    <input type="text" id="primeiroNome" placeholder="Novo Primeiro Nome do Usuário">
                     
-                    <label for="segundoNome">Digite o segundo do usuário: </label><br><br>
-                    <input type="text" id="segundoNome" placeholder="Novo Segundo Nome do Usuário"><br><br>
+                    <label for="segundoNome">Digite o segundo do usuário: </label>
+                    <input type="text" id="segundoNome" placeholder="Novo Segundo Nome do Usuário">
                     
-                    <label for="idade">A idade do usuário: </label><br><br>
-                    <input type="number" id="idade" placeholder="Nova Idade do Usuário" readonly><br><br>
+                    <label for="idade">A idade do usuário: </label>
+                    <input type="number" id="idade" placeholder="Nova Idade do Usuário" readonly>
                     
-                    <label for="telefone">Digite o telefone do usuário: </label><br><br>
-                    <input type="text" id="telefone" placeholder="Novo Telefone do Usuário"><br><br>
+                    <label for="telefone">Digite o telefone do usuário: </label>
+                    <input type="text" id="telefone" placeholder="Novo Telefone do Usuário">
                     
-                    <label for="endereco">Digite o endereco do usuário: </label><br><br>
-                    <input type="text" id="endereco" placeholder="Novo Endereço do Usuário"><br><br>
+                    <label for="endereco">Digite o endereco do usuário: </label>
+                    <input type="text" id="endereco" placeholder="Novo Endereço do Usuário">
                     
-                    <label for="cidade">Digite a cidade do usuário: </label><br><br>
-                    <input type="text" id="cidade" placeholder="Nova Cidade do Usuário"><br><br>
+                    <label for="cidade">Digite a cidade do usuário: </label>
+                    <input type="text" id="cidade" placeholder="Nova Cidade do Usuário">
                     
-                    <label for="estado">Digite o estado do usuário: </label><br><br>
-                    <input type="text" id="estado" placeholder="Novo Estado do Usuário"><br><br>
+                    <label for="estado">Digite o estado do usuário: </label>
+                    <input type="text" id="estado" placeholder="Novo Estado do Usuário">
                     
-                    <label for="dataNascimento">Digite a data de nascimento do usuário: </label><br><br>
-                    <input type="date" id="dataNascimento" placeholder="Nova Data de Nascimento do Usuário"><br><br>
+                    <label for="dataNascimento">Digite a data de nascimento do usuário: </label>
+                    <input type="date" id="dataNascimento" placeholder="Nova Data de Nascimento do Usuário">
 
                     <select id="selecaoAcao">
                         <option value="none">Selecione uma ação...</option>
                         <option value="consultar">Consultar</option>
                         <option value="atualizar">Atualizar</option>
-                    </select><br><br>
+                    </select>
                 </form>
                 <div id="res"></div>
             `
@@ -317,8 +317,8 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Excluir Usuário</h2>
                 <form id="formExcluirUsuario">
-                    <label for="idUsuarioExcluir">Digite o COD do usuário a ser excluído: </label><br><br>
-                    <input type="number" id="idUsuarioExcluir" placeholder="COD do Usuário a ser Excluído..." min="1" required><br><br>
+                    <label for="idUsuarioExcluir">Digite o COD do usuário a ser excluído: </label>
+                    <input type="number" id="idUsuarioExcluir" placeholder="COD do Usuário a ser Excluído..." min="1" required>
                     <button id="excluirUsuario">Excluir</button>
                 </form>
                 <div id="res"></div>
@@ -328,7 +328,7 @@ function controleMenu() {
 
         if (page == "usuario" && service == "lote") {
             dynamicMenu.innerHTML = `
-                <h2>Gerenciar Lote de Usuários</h2><br>
+                <h2>Gerenciar Lote de Usuários</h2>
                 <button id="cadastrarLoteUsuarios">Cadastrar Lote</button>
                 <div id="res"></div>
             `
@@ -339,11 +339,11 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Consultar Usuário</h2>
                 <form id="formConsultarUsuario">
-                    <label for="nomeUsuarioConsultar">Digite o nome do usuário a ser consultado: </label><br><br>
-                    <input type="text" id="nomeUsuarioConsultar" placeholder="Nome do Usuário a ser Consultado..." min="1" required><br><br>
+                    <label for="nomeUsuarioConsultar">Digite o nome do usuário a ser consultado: </label>
+                    <input type="text" id="nomeUsuarioConsultar" placeholder="Nome do Usuário a ser Consultado..." min="1" required>
 
-                    <label for="idUsuarioConsultar">Digite o COD do usuário a ser consultado: </label><br><br>
-                    <input type="number" id="idUsuarioConsultar" placeholder="COD do Usuário a ser Consultado..." required><br><br>
+                    <label for="idUsuarioConsultar">Digite o COD do usuário a ser consultado: </label>
+                    <input type="number" id="idUsuarioConsultar" placeholder="COD do Usuário a ser Consultado..." required>
                     <button id="consultarUsuario">Consultar</button>
                 </form>
                 <div id="res"></div>
@@ -353,15 +353,15 @@ function controleMenu() {
 
         if (page == "usuario" && service == "relatorio") {
             dynamicMenu.innerHTML = `
-                <h2>Relatório de Usuários</h2><br>
-                <div id="resRelatUsu"></div><br><br><br>
+                <h2>Relatório de Usuários</h2>
+                <div id="resRelatUsu"></div><br>
 
-                <h2>Gráfico de Usuários</h2><br>
+                <h2>Gráfico de Usuários</h2>
                 <label for="limiteGrafUser">Digite o limite de filtragem do gráfico: </label>
-                <input type="number" id="limiteGrafUser" placeholder="Limite de filtragem do gráfico..." min="1" max="10"><br><br>
+                <input type="number" id="limiteGrafUser" placeholder="Limite de filtragem do gráfico..." min="1" max="10">
 
                 <label for="minGrafUser">Digite o mínimo de filtragem do gráfico: </label>
-                <input type="number" id="minGrafUser" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10"><br>
+                <input type="number" id="minGrafUser" placeholder="Mínimo de filtragem do gráfico..." min="0" max="10">
 
                 <button id="exibirGraficoUser">Exibir gráfico</button>
                 <canvas id="resGrafUser"></canvas>
@@ -374,35 +374,35 @@ function controleMenu() {
 
         if (page == "compra" && service == "cadastrar") {
             dynamicMenu.innerHTML = `
-                <h2>Cadastrar Compra</h2><br>
+                <h2>Cadastrar Compra</h2>
                 <form id="formCadastroCompra">
-                    <label for="idUsuario">Digite o COD do usuário: </label><br>
-                    <input type="number" id="idUsuario" placeholder="ID do Usuário..." required><br><br>
+                    <label for="idUsuario">Digite o COD do usuário: </label>
+                    <input type="number" id="idUsuario" placeholder="ID do Usuário..." required>
 
-                    <label for="idProduto">Digite o COD do produto: </label><br>
-                    <input type="number" id="idProduto" placeholder="ID do Produto..." required><br><br>
+                    <label for="idProduto">Digite o COD do produto: </label>
+                    <input type="number" id="idProduto" placeholder="ID do Produto..." required>
 
-                    <label for="quantidade">Digite a quantidade: </label><br>
-                    <input type="number" id="quantidade" placeholder="Quantidade..." required><br><br>
+                    <label for="quantidade">Digite a quantidade: </label>
+                    <input type="number" id="quantidade" placeholder="Quantidade..." required>
 
-                    <label for="formaPagamento">Selecione a forma de pagamento da compra: </label><br>
+                    <label for="formaPagamento">Selecione a forma de pagamento da compra: </label>
                     <select id="formaPagamento" required>
                         <option value="" disabled selected>Selecione uma forma de pagamento...</option>
                         <option value="cartao">Cartão</option>
                         <option value="dinheiro">Dinheiro</option>
                         <option value="pix">Pix</option>
                         <option value="boleto">Boleto</option>
-                    </select><br><br>
+                    </select>
                     
-                    <label for="status">Selecione o status da compra: </label><br>
+                    <label for="status">Selecione o status da compra: </label>
                     <select id="status" required>
                         <option value="" disabled selected>Selecione um status...</option>
                         <option value="pendente">Pendente</option>
                         <option value="aprovada">Aprovada</option>
                         <option value="finalizada">Finalizada</option>
-                    </select><br><br>
+                    </select><br>
                     <button id="cadastrarCompra">Cadastrar</button>
-                </form><br><br>
+                </form><br>
                 <div id="res"></div>
             `
             cadastrarCompra()
@@ -420,40 +420,46 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Atualizar Compra</h2>
                 <form id="formAtualizarCompra">
-                    <label for="idCompra">Digite o COD da compra: </label><br><br>
-                    <input type="number" id="idCompra" placeholder="ID da Compra..." min="1" required><br><br>
+                    <label for="idCompra">Digite o COD da compra: </label>
+                    <input type="number" id="idCompra" placeholder="ID da Compra..." min="1" required>
 
-                    <label for="idUsuario">Digite o COD do usuário: </label><br><br>
-                    <input type="number" id="idUsuario" placeholder="ID do Usuário..."><br><br>
+                    <label for="idUsuario">Digite o COD do usuário: </label>
+                    <input type="number" id="idUsuario" placeholder="ID do Usuário...">
 
-                    <label for="idProduto">Digite o COD do produto: </label><br><br>
-                    <input type="number" id="idProduto" placeholder="ID do Produto..."><br><br>
+                    <label for="idProduto">Digite o COD do produto: </label>
+                    <input type="number" id="idProduto" placeholder="ID do Produto...">
 
-                    <label for="quantidade">Digite a quantidade: </label><br><br>
-                    <input type="number" id="quantidade" placeholder="Quantidade..."><br><br>
+                    <label for="quantidade">Digite a quantidade: </label>
+                    <input type="number" id="quantidade" placeholder="Quantidade...">
 
-                    <label for="dataCompra">Digite a data da compra: </label><br><br>
-                    <input type="date" id="dataCompra" placeholder="Data da compra..."><br><br>
+                    <label for="dataCompra">Digite a data da compra: </label>
+                    <input type="date" id="dataCompra" placeholder="Data da compra...">
                     
-                    <label for="status">Selecione o status da compra: </label><br>
+                    <label for="status">Selecione o status da compra: </label>
                     <select id="status" required>
                         <option value="" disabled selected>Selecione um status...</option>
                         <option value="pendente">Pendente</option>
                         <option value="aprovada">Aprovada</option>
                         <option value="finalizada">Finalizada</option>
-                    </select><br><br>
+                    </select>
 
-                    <label for="precoUnitario">Digite o preço unitário da compra: </label><br><br>
-                    <input type="number" id="precoUnitario" placeholder="Preço unitário..."><br><br>
+                    <label for="precoUnitario">Digite o preço unitário da compra: </label>
+                    <input type="number" id="precoUnitario" placeholder="Preço unitário...">
 
-                    <label for="formaPagamento">Digite a forma de pagamento da compra: </label><br><br>
-                    <input type="text" id="formaPagamento" placeholder="Forma de pagamento..."><br><br>
+                    <label for="formaPagamento">Selecione a forma de pagamento da compra: </label>
+                    <select id="formaPagamento" required>
+                        <option value="" disabled selected>Selecione uma forma de pagamento...</option>
+                        <option value="cartao">Cartão</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="pix">Pix</option>
+                        <option value="boleto">Boleto</option>
+                    </select>
 
                     <select id="selecaoAcao">
                         <option value="none">Selecione uma ação...</option>
                         <option value="consultar">Consultar</option>
                         <option value="atualizar">Atualizar</option>
-                    </select><br><br>
+                    </select>
                 </form>
                 <div id="res"></div>
             `
@@ -464,8 +470,8 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Excluir Compra</h2>
                 <form id="formExcluirCompra">
-                    <label for="idCompraExcluir">Digite o COD da compra a ser excluída: </label><br><br>
-                    <input type="number" id="idCompraExcluir" placeholder="COD da Compra a ser Excluída..." min="1" required><br><br>
+                    <label for="idCompraExcluir">Digite o COD da compra a ser excluída: </label>
+                    <input type="number" id="idCompraExcluir" placeholder="COD da Compra a ser Excluída..." min="1" required><br>
                     <button id="excluirCompra">Excluir</button>
                 </form>
                 <div id="res"></div>
@@ -475,13 +481,13 @@ function controleMenu() {
 
         if (page == "compra" && service == "relatorio") {
             dynamicMenu.innerHTML = `
-                <h2>Relatório de Compras</h2><br>
-                <div id="resRelatComp"></div><br><br><br>
+                <h2>Relatório de Compras</h2>
+                <div id="resRelatCompras"></div><br>
 
-                <h2>Relatório de Estoque Crítico</h2><br>
-                <div id="resRelatCompEstoqCritic"></div><br><br><br>
+                <h2>Relatório de Estoque Crítico</h2>
+                <div id="resRelatCompEstoqCritic"></div><br>
 
-                <h2>Relatório Consolidado</h2><br>
+                <h2>Relatório Consolidado</h2>
                 <div id="resRelatCompConsolidado"></div><br>
             `
             relatorioComprasCompleto()

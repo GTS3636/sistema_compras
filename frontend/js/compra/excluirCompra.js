@@ -29,7 +29,6 @@ export function excluirCompra() {
             })
             .then(async compra => {
                 const compraExixstente = compra.find(comp => comp.id === Number(idCompra))
-                console.log(compraExixstente)
                 if (compraExixstente) {
                     idProduto = compraExixstente.produtoId
                     quantidadeCompra = compraExixstente.quantidade
@@ -61,9 +60,6 @@ export function excluirCompra() {
                                             if (!resp.ok) {
                                                 throw new Error("Erro no recebimento dos dados ao atualizar o produto")
                                             } return resp.json()
-                                        })
-                                        .then(data => {
-                                            console.log("Produto atualizado: ", data)
                                         })
                                         .catch((err) => {
                                             console.error("Erro no fetch ao atualizar o produto: ", err)
