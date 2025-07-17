@@ -41,7 +41,7 @@ export function listarCompras() {
                             <td>${compra.produtoId}</td>
                             <td>${compra.quantidade}</td>
                             <td>${compra.dataCompra ? compra.dataCompra = new Date().toLocaleDateString("pt-BR") : compra.dataCompra}</td>
-                            <td>${compra.precoUnitario.toFixed(2)}</td>
+                            <td>R$ ${compra.precoUnitario.toFixed(2)}</td>
                             <td>${compra.formaPagamento}</td>
                             <td>${compra.status}</td>
                         </tr>

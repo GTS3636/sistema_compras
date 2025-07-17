@@ -2,12 +2,12 @@ export async function atualizarCompra() {
     let res = document.getElementById("res")
     let selecaoAcao = document.getElementById("selecaoAcao")
 
-    let idUsuario = document.getElementById("idUsuarioCompra")
-    let idProduto = document.getElementById("idProdutoCompra")
-    let quantidade = parseInt(document.getElementById("quantidade"))
+    let idUsuario = document.getElementById("idUsuario")
+    let idProduto = document.getElementById("idProduto")
+    let quantidade = document.getElementById("quantidade")
     let dataCompra = document.getElementById("dataCompra")
     let formaPagamento = document.getElementById("formaPagamento")
-    let precoUnitario = parseFloat(document.getElementById("precoUnitario").value)
+    let precoUnitario = document.getElementById("precoUnitario")
     let status = document.getElementById("status")
 
     idUsuario.disabled = true

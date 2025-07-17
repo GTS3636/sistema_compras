@@ -130,7 +130,7 @@ function controleMenu() {
                 <h2>Atualizar Produto</h2>
                 <form id="formAtualizarProduto">
                     <label for="idProduto">Digite o COD do produto: </label><br>
-                    <input type="number" id="idProduto" placeholder="ID do Produto" required><br><br>
+                    <input type="number" id="idProduto" placeholder="ID do Produto" min="1" required><br><br>
                     
                     <label for="titulo">Digite o titulo do produto: </label><br>
                     <input type="text" id="titulo" placeholder="Novo Título do Produto"><br><br>
@@ -142,13 +142,13 @@ function controleMenu() {
                     <input type="text" id="categoria" placeholder="Nova Categoria do Produto"><br><br>
                     
                     <label for="preco">Digite o preco do produto: </label><br>
-                    <input type="number" id="preco" placeholder="Novo Preço do Produto" step="0.01"><br><br>
+                    <input type="number" id="preco" placeholder="Novo Preço do Produto" min="0" step="0.01"><br><br>
                     
                     <label for="percetualDesconto">Digite o percentual de desconto do produto: </label><br>
                     <input type="number" id="percetualDesconto" placeholder="Novo Percentual de Desconto (opcional)" step="0.01"><br><br>
                     
                     <label for="estoque">Digite o estoque do produto: </label><br>
-                    <input type="number" id="estoque" placeholder="Novo Estoque Disponível"><br><br>
+                    <input type="number" id="estoque" placeholder="Novo Estoque Disponível" min="1"><br><br>
                     
                     <label for="marca">Digite a marca do produto: </label><br>
                     <input type="text" id="marca" placeholder="Nova Marca do Produto"><br><br>
@@ -171,7 +171,7 @@ function controleMenu() {
             dynamicMenu.innerHTML = `
                 <h2>Excluir Produto</h2>
                 <form id="formExcluirProduto">
-                    <input type="number" id="idProdutoExcluir" placeholder="COD do Produto a ser Excluído..." required><br><br>
+                    <input type="number" id="idProdutoExcluir" placeholder="COD do Produto a ser Excluído..." min="1" required><br><br>
                     <button id="excluirProduto">Excluir</button>
                 </form>
                 <div id="res"></div>
@@ -193,7 +193,7 @@ function controleMenu() {
                 <h2>Consultar Produto</h2>
                 <form id="formConsultarProduto">
                     <label for="nomeProdutoConsultar">Digite o nome do produto a ser consultado: </label><br><br>
-                    <input type="text" id="nomeProdutoConsultar" placeholder="Nome do Produto a ser Consultado..." required><br><br>
+                    <input type="text" id="nomeProdutoConsultar" placeholder="Nome do Produto a ser Consultado..." min="1" required><br><br>
 
                     <label for="idProdutoConsultar">Digite o COD do produto a ser consultado: </label><br><br>
                     <input type="number" id="idProdutoConsultar" placeholder="ID do Produto a ser Consultado..." required><br><br>
@@ -276,7 +276,7 @@ function controleMenu() {
                 <h2>Atualizar Usuário</h2>
                 <form id="formAtualizarUsuario">
                     <label for="idUsuario">Digite o COD do usuário: </label><br><br>
-                    <input type="number" id="idUsuario" placeholder="ID do Usuário" required><br><br>
+                    <input type="number" id="idUsuario" placeholder="ID do Usuário" min="1" required><br><br>
                     
                     <label for="primeiroNome">Digite o primeiro do usuário: </label><br><br>
                     <input type="text" id="primeiroNome" placeholder="Novo Primeiro Nome do Usuário"><br><br>
@@ -318,7 +318,7 @@ function controleMenu() {
                 <h2>Excluir Usuário</h2>
                 <form id="formExcluirUsuario">
                     <label for="idUsuarioExcluir">Digite o COD do usuário a ser excluído: </label><br><br>
-                    <input type="number" id="idUsuarioExcluir" placeholder="COD do Usuário a ser Excluído..." required><br><br>
+                    <input type="number" id="idUsuarioExcluir" placeholder="COD do Usuário a ser Excluído..." min="1" required><br><br>
                     <button id="excluirUsuario">Excluir</button>
                 </form>
                 <div id="res"></div>
@@ -340,7 +340,7 @@ function controleMenu() {
                 <h2>Consultar Usuário</h2>
                 <form id="formConsultarUsuario">
                     <label for="nomeUsuarioConsultar">Digite o nome do usuário a ser consultado: </label><br><br>
-                    <input type="text" id="nomeUsuarioConsultar" placeholder="Nome do Usuário a ser Consultado..." required><br><br>
+                    <input type="text" id="nomeUsuarioConsultar" placeholder="Nome do Usuário a ser Consultado..." min="1" required><br><br>
 
                     <label for="idUsuarioConsultar">Digite o COD do usuário a ser consultado: </label><br><br>
                     <input type="number" id="idUsuarioConsultar" placeholder="COD do Usuário a ser Consultado..." required><br><br>
@@ -421,7 +421,7 @@ function controleMenu() {
                 <h2>Atualizar Compra</h2>
                 <form id="formAtualizarCompra">
                     <label for="idCompra">Digite o COD da compra: </label><br><br>
-                    <input type="number" id="idCompra" placeholder="ID da Compra..." required><br><br>
+                    <input type="number" id="idCompra" placeholder="ID da Compra..." min="1" required><br><br>
 
                     <label for="idUsuario">Digite o COD do usuário: </label><br><br>
                     <input type="number" id="idUsuario" placeholder="ID do Usuário..."><br><br>
@@ -434,6 +434,14 @@ function controleMenu() {
 
                     <label for="dataCompra">Digite a data da compra: </label><br><br>
                     <input type="date" id="dataCompra" placeholder="Data da compra..."><br><br>
+                    
+                    <label for="status">Selecione o status da compra: </label><br>
+                    <select id="status" required>
+                        <option value="" disabled selected>Selecione um status...</option>
+                        <option value="pendente">Pendente</option>
+                        <option value="aprovada">Aprovada</option>
+                        <option value="finalizada">Finalizada</option>
+                    </select><br><br>
 
                     <label for="precoUnitario">Digite o preço unitário da compra: </label><br><br>
                     <input type="number" id="precoUnitario" placeholder="Preço unitário..."><br><br>
@@ -457,7 +465,7 @@ function controleMenu() {
                 <h2>Excluir Compra</h2>
                 <form id="formExcluirCompra">
                     <label for="idCompraExcluir">Digite o COD da compra a ser excluída: </label><br><br>
-                    <input type="number" id="idCompraExcluir" placeholder="COD da Compra a ser Excluída..." required><br><br>
+                    <input type="number" id="idCompraExcluir" placeholder="COD da Compra a ser Excluída..." min="1" required><br><br>
                     <button id="excluirCompra">Excluir</button>
                 </form>
                 <div id="res"></div>
