@@ -13,7 +13,7 @@ import { listarUsuarios } from "./usuario/listarUsuarios.js"
 import { listarCompras } from "./compra/listarCompras.js"
 
 import { atualizarProduto } from "./produto/atualizarProduto.js"
-import { atualizarUsuario } from "./usuario/atualizarusuario.js"
+import { atualizarUsuario } from "./usuario/atualizarUsuario.js"
 import { atualizarCompra } from "./compra/atualizarCompra.js"
 
 import { excluirProduto } from "./produto/excluirProduto.js"
