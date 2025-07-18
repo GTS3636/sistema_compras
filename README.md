@@ -158,7 +158,7 @@ Este projeto é um sistema full‑stack para gerenciamento de produtos, compras 
 │   │   │   └── relatorioUsuario.js        # Arquivo lógico para gerar relatório do Usuário
 |   |   |
 │   │   ├── graficos.js                    # Criação e manejo dos gráficos
-│   │   └── index.js                       # Lógica de UI e consumo de APIs por import
+│   │   └── index.js                       # Lógica de UI e central de utilização e integração dos demais arquivos do sistema
 |   |
 │   └── index.html                         # Estrutura HTML e inclusão de Chart.js para utilização dos gráficos
 |
