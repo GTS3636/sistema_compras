@@ -115,15 +115,17 @@ Este projeto é um sistema full‑stack para gerenciamento de produtos, compras 
 │   └── package-lock.json                 # Dependências e scripts para os módulos instalados pelo npm (não mexer)
 |
 ├── docs/                                 # Documentação adicional             
-|   ├── dumps/
+|   ├── dumps/                            # Dumps sql
 |   |   ├── compras_db_compra.sql
 |   |   ├── compras_db_compras.sql
 |   |   ├── compras_db_routines.sql
 |   |   └── compras_db_usuario.sql
+|   |
+|   ├── Diagrama de Sequência Listagem    # Diagrama de Sequência em função da listagem de usuários
+|   ├── Diagrama de Sequência Produto     # Diagrama de Sequência em função do cadastro de produtos
 |   ├── caso de uso.png                   # Diagrama UML de caso de uso
 |   ├── diagramaClasse.png                # Diagrama UML de classe dos modelos
-|   ├── diagramaDER.png                   # Diagrama lógico criado pelo banco de dados
-|   └──
+|   └──diagramaDER.png                    # Diagrama lógico criado pelo banco de dados
 |
 ├── frontend/
 │   ├── css/
