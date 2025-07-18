@@ -94,75 +94,75 @@ Este projeto é um sistema full‑stack para gerenciamento de produtos, compras 
 ```text
 <root>/
 ├── backend/
-│   ├── controller/                       # Pasta com endpoints REST para os modelos
-│   │   ├── compra.controller.js          # Controller para conexçao do Front-End para o modelo Compra
-│   │   ├── produto.controller.js         # Controller para conexçao do Front-End para o modelo Produto
-│   │   └── usuario.controller.js         # Controller para conexçao do Front-End para o modelo Usuario
+│   ├── controller/                        # Pasta com endpoints REST para os modelos
+│   │   ├── compra.controller.js           # Controller para conexçao do Front-End para o modelo Compra
+│   │   ├── produto.controller.js          # Controller para conexçao do Front-End para o modelo Produto
+│   │   └── usuario.controller.js          # Controller para conexçao do Front-End para o modelo Usuario
 |   |
-│   ├── db/                               # Pasta para conexão com servidor 
-│   │   └── conn.js                       # Configuração de conexão com servidor
+│   ├── db/                                # Pasta para conexão com servidor 
+│   │   └── conn.js                        # Configuração de conexão com servidor
 |   |
-│   ├── model/                            # Pasta para definições de modelos Sequelize (produtos, compras, usuários)
-│   │   ├── Compra.js                     # Modelo Compra
-│   │   ├── Produto.js                    # Modelo Produto
-│   │   └── Usuario.js                    # Modelo Usuario
+│   ├── model/                             # Pasta para definições de modelos Sequelize (produtos, compras, usuários)
+│   │   ├── Compra.js                      # Modelo Compra
+│   │   ├── Produto.js                     # Modelo Produto
+│   │   └── Usuario.js                     # Modelo Usuario
 |   |
-│   ├── sync.js                           # Arquivo de entrada para o banco de dados (executar antes do principal)
-│   ├── index.js                          # Configuração do servidor principal (executar após o sync.js)
-│   ├── .env                              # Variáveis de ambiente
-│   ├── .gitignore                        # Arquivo para definir arquvios a serem ignorados em próximos commits
-│   ├── package.json                      # Dependências e scripts para o software
-│   └── package-lock.json                 # Dependências e scripts para os módulos instalados pelo npm (não mexer)
+│   ├── sync.js                            # Arquivo de entrada para o banco de dados (executar antes do principal)
+│   ├── index.js                           # Configuração do servidor principal (executar após o sync.js)
+│   ├── .env                               # Variáveis de ambiente
+│   ├── .gitignore                         # Arquivo para definir arquvios a serem ignorados em próximos commits
+│   ├── package.json                       # Dependências e scripts para o software
+│   └── package-lock.json                  # Dependências e scripts para os módulos instalados pelo npm (não mexer)
 |
-├── docs/                                 # Documentação adicional             
-|   ├── dumps/                            # Dumps sql
+├── docs/                                  # Documentação adicional             
+|   ├── dumps/                             # Dumps sql
 |   |   ├── compras_db_compra.sql
 |   |   ├── compras_db_compras.sql
 |   |   ├── compras_db_routines.sql
 |   |   └── compras_db_usuario.sql
 |   |
-|   ├── Diagrama de Sequência Listagem    # Diagrama de Sequência em função da listagem de usuários
-|   ├── Diagrama de Sequência Produto     # Diagrama de Sequência em função do cadastro de produtos
-|   ├── caso de uso.png                   # Diagrama UML de caso de uso
-|   ├── diagramaClasse.png                # Diagrama UML de classe dos modelos
-|   └──diagramaDER.png                    # Diagrama lógico criado pelo banco de dados
+|   ├── Diagrama de Sequência Listagem.png # Diagrama de Sequência em função da listagem de usuários
+|   ├── Diagrama de Sequência Produto.png  # Diagrama de Sequência em função do cadastro de produtos
+|   ├── caso de uso.png                    # Diagrama UML de caso de uso
+|   ├── diagramaClasse.png                 # Diagrama UML de classe dos modelos
+|   └── diagramaDER.png                    # Diagrama lógico criado pelo banco de dados
 |
 ├── frontend/
 │   ├── css/
-│   │   └── style.css                     # Estilos principais
+│   │   └── style.css                      # Estilos principais
 |   |
-│   ├── js/                               # Pasta para organização de lógica
-│   │   ├── compra/                       # Pasta para organização de funções no Front-End para o modelo compra
-│   │   │   ├── atualizarCompra.js        # Arquivo lógico para atualizar a Compra
-│   │   │   ├── cadastrarCompra.js        # Arquivo lógico para cadastrar a Compra
-│   │   │   ├── excluirCompra.js          # Arquivo lógico para excluir a Compra
-│   │   │   ├── listarCompra.js           # Arquivo lógico para listar a Compra
-│   │   │   └── relatorioCompra.js        # Arquivo lógico para gerar relatório do Compra   
+│   ├── js/                                # Pasta para organização de lógica
+│   │   ├── compra/                        # Pasta para organização de funções no Front-End para o modelo compra
+│   │   │   ├── atualizarCompra.js         # Arquivo lógico para atualizar a Compra
+│   │   │   ├── cadastrarCompra.js         # Arquivo lógico para cadastrar a Compra
+│   │   │   ├── excluirCompra.js           # Arquivo lógico para excluir a Compra
+│   │   │   ├── listarCompra.js            # Arquivo lógico para listar a Compra
+│   │   │   └── relatorioCompra.js         # Arquivo lógico para gerar relatório do Compra   
 |   |   |
-│   │   ├── produto/                      # Pasta para organização de funções no Front-End para o modelo produto
-│   │   │   ├── atualizarProduto.js       # Arquivo lógico para atualizar o Produto
-│   │   │   ├── cadastrarProduto.js       # Arquivo lógico para cadastrar o Produto
-│   │   │   ├── consultarProduto.js       # Arquivo lógico para consultar o Produto
-│   │   │   ├── excluirProduto.js         # Arquivo lógico para excluir o Produto
-│   │   │   ├── listarProduto.js          # Arquivo lógico para listar o Produto
-│   │   │   ├── loteProduto.js            # Arquivo lógico para cadastro de lote do Produto
-│   │   │   └── relatorioProduto.js       # Arquivo lógico para gerar relatório do Produto
+│   │   ├── produto/                       # Pasta para organização de funções no Front-End para o modelo produto
+│   │   │   ├── atualizarProduto.js        # Arquivo lógico para atualizar o Produto
+│   │   │   ├── cadastrarProduto.js        # Arquivo lógico para cadastrar o Produto
+│   │   │   ├── consultarProduto.js        # Arquivo lógico para consultar o Produto
+│   │   │   ├── excluirProduto.js          # Arquivo lógico para excluir o Produto
+│   │   │   ├── listarProduto.js           # Arquivo lógico para listar o Produto
+│   │   │   ├── loteProduto.js             # Arquivo lógico para cadastro de lote do Produto
+│   │   │   └── relatorioProduto.js        # Arquivo lógico para gerar relatório do Produto
 |   |   |
-│   │   ├── usuario/                      # Pasta para organização de funções no Front-End para o modelo usuario
-│   │   │   ├── atualizarUsuario.js       # Arquivo lógico para atualizar o Usuário
-│   │   │   ├── cadastrarUsuario.js       # Arquivo lógico para cadastrar o Usuário
-│   │   │   ├── consultarUsuario.js       # Arquivo lógico para consultar o Usuário
-│   │   │   ├── excluirUsuario.js         # Arquivo lógico para excluir o Usuário
-│   │   │   ├── listarUsuario.js          # Arquivo lógico para listar o Usuário
-│   │   │   ├── loteUsuario.js            # Arquivo lógico para cadastro de lote do Usuário
-│   │   │   └── relatorioUsuario.js       # Arquivo lógico para gerar relatório do Usuário
+│   │   ├── usuario/                       # Pasta para organização de funções no Front-End para o modelo usuario
+│   │   │   ├── atualizarUsuario.js        # Arquivo lógico para atualizar o Usuário
+│   │   │   ├── cadastrarUsuario.js        # Arquivo lógico para cadastrar o Usuário
+│   │   │   ├── consultarUsuario.js        # Arquivo lógico para consultar o Usuário
+│   │   │   ├── excluirUsuario.js          # Arquivo lógico para excluir o Usuário
+│   │   │   ├── listarUsuario.js           # Arquivo lógico para listar o Usuário
+│   │   │   ├── loteUsuario.js             # Arquivo lógico para cadastro de lote do Usuário
+│   │   │   └── relatorioUsuario.js        # Arquivo lógico para gerar relatório do Usuário
 |   |   |
-│   │   ├── graficos.js                   # Criação e manejo dos gráficos
-│   │   └── index.js                      # Lógica de UI e consumo de APIs por import
+│   │   ├── graficos.js                    # Criação e manejo dos gráficos
+│   │   └── index.js                       # Lógica de UI e consumo de APIs por import
 |   |
-│   └── index.html                        # Estrutura HTML e inclusão de Chart.js para utilização dos gráficos
+│   └── index.html                         # Estrutura HTML e inclusão de Chart.js para utilização dos gráficos
 |
-└── README.md                             # Documentação (este arquivo)
+└── README.md                              # Documentação (este arquivo)
 ```
 
 ---
