@@ -101,8 +101,8 @@ Este projeto é um sistema full‑stack para gerenciamento de produtos, compras 
 |   |
 │   ├── db/                               # Pasta para conexão com servidor 
 │   │   └── conn.js                       # Configuração de conexão com servidor
-│   ├── model/                            # Pasta para definições de modelos Sequelize (produtos, compras, usuários)
 |   |
+│   ├── model/                            # Pasta para definições de modelos Sequelize (produtos, compras, usuários)
 │   │   ├── Compra.js                     # Modelo Compra
 │   │   ├── Produto.js                    # Modelo Produto
 │   │   └── Usuario.js                    # Modelo Usuario
@@ -114,42 +114,53 @@ Este projeto é um sistema full‑stack para gerenciamento de produtos, compras 
 │   ├── package.json                      # Dependências e scripts para o software
 │   └── package-lock.json                 # Dependências e scripts para os módulos instalados pelo npm (não mexer)
 |
+├── docs/                                 # Documentação adicional             
+|   ├── dumps/
+|   |   ├── compras_db_compra.sql
+|   |   ├── compras_db_compras.sql
+|   |   ├── compras_db_routines.sql
+|   |   └── compras_db_usuario.sql
+|   ├── caso de uso.png                   # Diagrama UML de caso de uso
+|   ├── diagramaClasse.png                # Diagrama UML de classe dos modelos
+|   ├── diagramaDER.png                   # Diagrama lógico criado pelo banco de dados
+|   └──
+|
 ├── frontend/
 │   ├── css/
-│   │   └── style.css                  # Estilos principais
+│   │   └── style.css                     # Estilos principais
 |   |
-│   ├── js/                            # Pasta para organização de lógica
-│   │   ├── compra/                    # Pasta para organização de funções no Front-End para o modelo compra
-│   │   │   ├── atualizarCompra.js     # Arquivo lógico para atualizar a Compra
-│   │   │   ├── cadastrarCompra.js     # Arquivo lógico para cadastrar a Compra
-│   │   │   ├── excluirCompra.js       # Arquivo lógico para excluir a Compra
-│   │   │   ├── listarCompra.js        # Arquivo lógico para listar a Compra
-│   │   │   └── relatorioCompra.js     # Arquivo lógico para gerar relatório do Compra   
+│   ├── js/                               # Pasta para organização de lógica
+│   │   ├── compra/                       # Pasta para organização de funções no Front-End para o modelo compra
+│   │   │   ├── atualizarCompra.js        # Arquivo lógico para atualizar a Compra
+│   │   │   ├── cadastrarCompra.js        # Arquivo lógico para cadastrar a Compra
+│   │   │   ├── excluirCompra.js          # Arquivo lógico para excluir a Compra
+│   │   │   ├── listarCompra.js           # Arquivo lógico para listar a Compra
+│   │   │   └── relatorioCompra.js        # Arquivo lógico para gerar relatório do Compra   
 |   |   |
-│   │   ├── produto/                   # Pasta para organização de funções no Front-End para o modelo produto
-│   │   │   ├── atualizarProduto.js    # Arquivo lógico para atualizar o Produto
-│   │   │   ├── cadastrarProduto.js    # Arquivo lógico para cadastrar o Produto
-│   │   │   ├── consultarProduto.js    # Arquivo lógico para consultar o Produto
-│   │   │   ├── excluirProduto.js      # Arquivo lógico para excluir o Produto
-│   │   │   ├── listarProduto.js       # Arquivo lógico para listar o Produto
-│   │   │   ├── loteProduto.js         # Arquivo lógico para cadastro de lote do Produto
-│   │   │   └── relatorioProduto.js    # Arquivo lógico para gerar relatório do Produto
+│   │   ├── produto/                      # Pasta para organização de funções no Front-End para o modelo produto
+│   │   │   ├── atualizarProduto.js       # Arquivo lógico para atualizar o Produto
+│   │   │   ├── cadastrarProduto.js       # Arquivo lógico para cadastrar o Produto
+│   │   │   ├── consultarProduto.js       # Arquivo lógico para consultar o Produto
+│   │   │   ├── excluirProduto.js         # Arquivo lógico para excluir o Produto
+│   │   │   ├── listarProduto.js          # Arquivo lógico para listar o Produto
+│   │   │   ├── loteProduto.js            # Arquivo lógico para cadastro de lote do Produto
+│   │   │   └── relatorioProduto.js       # Arquivo lógico para gerar relatório do Produto
 |   |   |
-│   │   ├── usuario/                   # Pasta para organização de funções no Front-End para o modelo usuario
-│   │   │   ├── atualizarUsuario.js    # Arquivo lógico para atualizar o Usuário
-│   │   │   ├── cadastrarUsuario.js    # Arquivo lógico para cadastrar o Usuário
-│   │   │   ├── consultarUsuario.js    # Arquivo lógico para consultar o Usuário
-│   │   │   ├── excluirUsuario.js      # Arquivo lógico para excluir o Usuário
-│   │   │   ├── listarUsuario.js       # Arquivo lógico para listar o Usuário
-│   │   │   ├── loteUsuario.js         # Arquivo lógico para cadastro de lote do Usuário
-│   │   │   └── relatorioUsuario.js    # Arquivo lógico para gerar relatório do Usuário
+│   │   ├── usuario/                      # Pasta para organização de funções no Front-End para o modelo usuario
+│   │   │   ├── atualizarUsuario.js       # Arquivo lógico para atualizar o Usuário
+│   │   │   ├── cadastrarUsuario.js       # Arquivo lógico para cadastrar o Usuário
+│   │   │   ├── consultarUsuario.js       # Arquivo lógico para consultar o Usuário
+│   │   │   ├── excluirUsuario.js         # Arquivo lógico para excluir o Usuário
+│   │   │   ├── listarUsuario.js          # Arquivo lógico para listar o Usuário
+│   │   │   ├── loteUsuario.js            # Arquivo lógico para cadastro de lote do Usuário
+│   │   │   └── relatorioUsuario.js       # Arquivo lógico para gerar relatório do Usuário
 |   |   |
-│   │   ├── graficos.js                # Criação e manejo dos gráficos
-│   │   └── index.js                   # Lógica de UI e consumo de APIs por import
+│   │   ├── graficos.js                   # Criação e manejo dos gráficos
+│   │   └── index.js                      # Lógica de UI e consumo de APIs por import
 |   |
-│   └── index.html                     # Estrutura HTML e inclusão de Chart.js para utilização dos gráficos
+│   └── index.html                        # Estrutura HTML e inclusão de Chart.js para utilização dos gráficos
 |
-└── README.md                          # Documentação (este arquivo)
+└── README.md                             # Documentação (este arquivo)
 ```
 
 ---
