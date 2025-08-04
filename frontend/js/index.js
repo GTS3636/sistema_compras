@@ -87,28 +87,28 @@ function controleMenu() {
                 <h2>Cadastrar Produto</h2>
                 <form id="formCadastroProduto">
                     <label for="titulo">Digite o título do produto: </label>
-                    <input type="text" id="titulo" placeholder="Título do Produto" required><br>
+                    <input type="text" id="titulo" placeholder="Título do Produto" required>
                     
                     <label for="descricao">Digite a descrição do produto: </label>
-                    <textarea id="descricao" placeholder="Descrição do Produto"></textarea><br>
+                    <textarea id="descricao" placeholder="Descrição do Produto"></textarea>
                     
                     <label for="categoria">Digite a categoria do produto: </label>
-                    <input type="text" id="categoria" placeholder="Categoria do Produto" required><br>
+                    <input type="text" id="categoria" placeholder="Categoria do Produto" required>
                     
                     <label for="preco">Digite o preço do produto: </label>
-                    <input type="number" id="preco" placeholder="Preço do Produto" step="0.01" required><br>
+                    <input type="number" id="preco" placeholder="Preço do Produto" step="0.01" required>
                     
-                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label><
-                    <input type="number" id="percetualDesconto" placeholder="Percentual de Desconto (opcional)" step="0.01"><br>
+                    <label for="percetualDesconto">Digite o percentual de desconto do produto: </label>
+                    <input type="number" id="percetualDesconto" placeholder="Percentual de Desconto (opcional)" step="0.01">
                     
                     <label for="estoque">Digite o estoque do produto: </label>
-                    <input type="number" id="estoque" placeholder="Estoque Disponível" required><br>
+                    <input type="number" id="estoque" placeholder="Estoque Disponível" required>
                     
                     <label for="marca">Digite a marca do produto: </label>
-                    <input type="text" id="marca" placeholder="Marca do Produto" required><br>
+                    <input type="text" id="marca" placeholder="Marca do Produto" required>
                     
                     <label for="thumbnail">Digite o link da thumbnail do produto: </label>
-                    <input type="text" id="thumbnail" placeholder="Thumbnail do Produto" required><br>
+                    <input type="text" id="thumbnail" placeholder="Thumbnail do Produto" required>
 
                     <button id="cadastroProduto">Cadastrar</button><br>
                 </form>
