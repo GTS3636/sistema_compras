@@ -130,31 +130,31 @@ function controleMenu() {
                 <h2>Atualizar Produto</h2>
                 <form id="formAtualizarProduto">
                     <label for="idProduto">Digite o COD do produto: </label>
-                    <input type="number" id="idProduto" placeholder="ID do Produto" min="1" required><br>
+                    <input type="number" id="idProduto" placeholder="ID do Produto" min="1" required>
                     
                     <label for="titulo">Digite o titulo do produto: </label>
-                    <input type="text" id="titulo" placeholder="Novo Título do Produto"><br>
+                    <input type="text" id="titulo" placeholder="Novo Título do Produto">
                     
                     <label for="descricao">Digite a descrição do produto: </label>
-                    <textarea id="descricao" placeholder="Nova Descrição do Produto"></textarea><br>
+                    <textarea id="descricao" placeholder="Nova Descrição do Produto"></textarea>
                     
                     <label for="categoria">Digite a categoria do produto: </label>
-                    <input type="text" id="categoria" placeholder="Nova Categoria do Produto"><br>
+                    <input type="text" id="categoria" placeholder="Nova Categoria do Produto">
                     
                     <label for="preco">Digite o preco do produto: </label>
-                    <input type="number" id="preco" placeholder="Novo Preço do Produto" min="0" step="0.01"><br>
+                    <input type="number" id="preco" placeholder="Novo Preço do Produto" min="0" step="0.01">
                     
                     <label for="percetualDesconto">Digite o percentual de desconto do produto: </label>
-                    <input type="number" id="percetualDesconto" placeholder="Novo Percentual de Desconto (opcional)" step="0.01"><br>
+                    <input type="number" id="percetualDesconto" placeholder="Novo Percentual de Desconto (opcional)" step="0.01">
                     
                     <label for="estoque">Digite o estoque do produto: </label>
-                    <input type="number" id="estoque" placeholder="Novo Estoque Disponível" min="1"><br>
+                    <input type="number" id="estoque" placeholder="Novo Estoque Disponível" min="1">
                     
                     <label for="marca">Digite a marca do produto: </label>
-                    <input type="text" id="marca" placeholder="Nova Marca do Produto"><br>
+                    <input type="text" id="marca" placeholder="Nova Marca do Produto">
 
                     <label for="thumbnail">Digite a thumbnail do produto: </label>
-                    <input type="text" id="thumbnail" placeholder="Nova Thumbnail do Produto"><br>
+                    <input type="text" id="thumbnail" placeholder="Nova Thumbnail do Produto">
 
                     <select id="selecaoAcao">
                         <option value="none">Selecione uma ação</option>
