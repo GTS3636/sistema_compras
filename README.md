@@ -117,7 +117,7 @@ Este projeto é um sistema full‑stack para gerenciamento de produtos, compras 
 ├── docs/                                  # Documentação adicional             
 |   ├── dumps/                             # Dumps sql
 |   |   ├── compras_db_compra.sql
-|   |   ├── compras_db_compras.sql
+|   |   ├── compras_db_produto.sql
 |   |   ├── compras_db_routines.sql
 |   |   └── compras_db_usuario.sql
 |   |
