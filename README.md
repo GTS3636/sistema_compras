@@ -123,7 +123,7 @@ Este projeto é um sistema full‑stack para gerenciamento de produtos, compras 
 |   |
 |   ├── Diagrama de Sequência Listagem.png # Diagrama de Sequência em função da listagem de usuários
 |   ├── Diagrama de Sequência Produto.png  # Diagrama de Sequência em função do cadastro de produtos
-|   ├── caso de uso.png                    # Diagrama UML de caso de uso
+|   ├── CasoUso.png                        # Diagrama UML de caso de uso
 |   ├── diagramaClasse.png                 # Diagrama UML de classe dos modelos
 |   └── diagramaDER.png                    # Diagrama lógico criado pelo banco de dados
 |
