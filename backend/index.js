@@ -13,7 +13,7 @@ app.use(cors())
 
 const compraController = require('./controller/compra.controller.js')
 const usuarioController = require('./controller/usuario.controller.js')
-const produtoController = require('./controller/produto.controlelr.js')
+const produtoController = require('./controller/produto.controller.js')
 
 app.post("/compra", compraController.cadastrar)
 app.get("/compra", compraController.listar)
