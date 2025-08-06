@@ -1,6 +1,7 @@
 export function loteProduto() {
     let cadastrarLote = document.getElementById("cadastrarLote")
     let res = document.getElementById("res")
+    let valores = []
     cadastrarLote.disabled = false
     cadastrarLote.textContent = "Cadastrar Lote"
 
@@ -11,7 +12,7 @@ export function loteProduto() {
                 if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote")
                 return resp.json()
             })
-            .then(data => {
+            .then(async data => {
                 cadastrarLote.disabled = true
                 cadastrarLote.textContent = "Cadastrando Lote..."
                 res.innerHTML = ``
@@ -36,7 +37,7 @@ export function loteProduto() {
                             </table>
                             `
                 data.products.forEach(async produto => {
-                    const valores = {
+                    let dadosProduto = {
                         titulo: produto.title,
                         descricao: produto.description,
                         categoria: produto.category,
@@ -46,19 +47,22 @@ export function loteProduto() {
                         marca: produto.brand || "Sem marca registrada",
                         thumbnail: produto.thumbnail
                     }
-                    await fetch("http://localhost:3000/produto", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(valores)
+                    valores.push(dadosProduto)
+                })
+                console.log(valores)
+                await fetch("http://localhost:3000/produto/lote", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(valores)
+                })
+                    .then(resp => {
+                        if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote")
+                        return resp.json()
                     })
-                        .then(resp => {
-                            if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote")
-                            return resp.json()
-                        })
-                        .then(prod => {
-                            res.querySelector("#tbodyProdutos").innerHTML += `
+                    .then(prod => {
+                        res.querySelector("#tbodyProdutos").innerHTML += `
                                         <tr>
                                             <td>${prod.id}</td>
                                             <td>${prod.titulo}</td>
@@ -71,16 +75,15 @@ export function loteProduto() {
                                             <td><img src="${prod.thumbnail}" alt="${prod.thumbnail}" width="75" height="60"></td>
                                         </tr>
                                     `
-                        })
-                        .catch((err) => {
-                            console.error("Erro ao cadastrar lote de produtos:", err)
-                            alert("Erro ao cadastrar lote de produtos. Verifique os dados e tente novamente.")
-                        })
-                        .finally(() => {
-                            cadastrarLote.textContent = "Cadastrar Lote"
-                            cadastrarLote.disabled = false
-                        })
-                })
+                    })
+                    .catch((err) => {
+                        console.error("Erro ao cadastrar lote de produtos:", err)
+                        alert("Erro ao cadastrar lote de produtos. Verifique os dados e tente novamente.")
+                    })
+                    .finally(() => {
+                        cadastrarLote.textContent = "Cadastrar Lote"
+                        cadastrarLote.disabled = false
+                    })
             })
             .catch((err) => {
                 console.error("Erro ao cadastrar lote de produtos:", err)

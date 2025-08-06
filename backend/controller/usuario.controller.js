@@ -76,4 +76,19 @@ const consultar = async (req, res) => {
         res.status(500).json({ message: 'Erro interno do servidor ao consultar o usuário.' })
     }
 }
-module.exports = { cadastrar, consultar, atualizar, deletar, listar }
+const cadastrarLote = async (req, res) => {
+    const data = req.body
+    try {
+        const resp = await Usuario.bulkCreate(data)
+        if (resp) {
+            res.status(200).json(resp)
+        } else {
+            res.status(500).json({ message: "Erro no cadastrar os dados em lote." })
+            console.error("Erro no cadastrar os dados em lote.")
+        }
+    } catch {
+        console.error("Erro interno do servidor ao cadastrar em lote os usuários:", err)
+        res.status(500).json({ message: 'Erro interno do servidor ao cadastrar em lote os usuários.' })
+    }
+}
+module.exports = { cadastrar, cadastrarLote, consultar, atualizar, deletar, listar }

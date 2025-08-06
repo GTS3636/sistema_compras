@@ -1,5 +1,6 @@
 export function loteUsuarios() {
     let cadastrarLoteUsuarios = document.getElementById("cadastrarLoteUsuarios")
+    let valores = []
     let res = document.getElementById("res")
     cadastrarLoteUsuarios.disabled = false
     cadastrarLoteUsuarios.textContent = "Cadastrar Lote"
@@ -11,7 +12,7 @@ export function loteUsuarios() {
                 if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote de usuários")
                 return resp.json()
             })
-            .then(data => {
+            .then(async data => {
                 cadastrarLoteUsuarios.disabled = true
                 cadastrarLoteUsuarios.textContent = "Cadastrando Lote..."
                 res.innerHTML = ``
@@ -37,7 +38,7 @@ export function loteUsuarios() {
                             </table>
                             `
                 data.users.forEach(async usuario => {
-                    const valores = {
+                    let dadosUser = {
                         primeiroNome: usuario.firstName,
                         segundoNome: usuario.lastName,
                         idade: usuario.age,
@@ -48,37 +49,39 @@ export function loteUsuarios() {
                         dataNascimento: usuario.birthDate,
                         email: usuario.email
                     }
-                    await fetch("http://localhost:3000/usuario", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(valores)
-                    })
-                        .then(resp => {
-                            if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote de usuários")
-                            return resp.json()
-                        })
-                        .then(usuario => {
-                            res.querySelector("#tbodyUsuarios").innerHTML += `
-                                <tr>
-                                    <td>${usuario.id}</td>
-                                    <td>${usuario.primeiroNome} ${usuario.segundoNome}</td>
-                                    <td>${usuario.idade}</td>
-                                    <td>${usuario.email}</td>
-                                    <td>${usuario.telefone}</td>
-                                    <td>${usuario.endereco}</td>
-                                    <td>${usuario.cidade}</td>
-                                    <td>${usuario.estado}</td>
-                                    <td>${usuario.dataNascimento ? usuario.dataNascimento = new Date(usuario.dataNascimento).toLocaleDateString("pt-BR") : usuario.dataNascimento}</td>
-                                </tr>
-                            `
-                        })
-                        .catch((err) => {
-                            console.error("Erro ao cadastrar lote de usuários:", err)
-                            alert("Erro ao cadastrar lote de usuários. Verifique os dados e tente novamente.")
-                        })
+                    valores.push(dadosUser)
                 })
+                console.log(valores)
+                await fetch("http://localhost:3000/usuario/lote", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(valores)
+                })
+                    .then(resp => {
+                        if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote de usuários")
+                        return resp.json()
+                    })
+                    .then(usuario => {
+                        res.querySelector("#tbodyUsuarios").innerHTML += `
+                            <tr>
+                                <td>${usuario.id}</td>
+                                <td>${usuario.primeiroNome} ${usuario.segundoNome}</td>
+                                <td>${usuario.idade}</td>
+                                <td>${usuario.email}</td>
+                                <td>${usuario.telefone}</td>
+                                <td>${usuario.endereco}</td>
+                                <td>${usuario.cidade}</td>
+                                <td>${usuario.estado}</td>
+                                <td>${usuario.dataNascimento ? usuario.dataNascimento = new Date(usuario.dataNascimento).toLocaleDateString("pt-BR") : usuario.dataNascimento}</td>
+                            </tr>
+                        `
+                    })
+                    .catch((err) => {
+                        console.error("Erro ao cadastrar lote de usuários:", err)
+                        alert("Erro ao cadastrar lote de usuários. Verifique os dados e tente novamente.")
+                    })
             })
             .catch((err) => {
                 console.error("Erro ao cadastrar lote de usuários:", err)
