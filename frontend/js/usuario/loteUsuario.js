@@ -50,6 +50,18 @@ export function loteUsuarios() {
                         email: usuario.email
                     }
                     valores.push(dadosUser)
+                    res.querySelector("#tbodyUsuarios").innerHTML += `
+                            <tr>
+                                <td>${usuario.firstName} ${usuario.lastName}</td>
+                                <td>${usuario.age}</td>
+                                <td>${usuario.email}</td>
+                                <td>${usuario.phone}</td>
+                                <td>${usuario.address.address}</td>
+                                <td>${usuario.address.city}</td>
+                                <td>${usuario.address.state}</td>
+                                <td>${usuario.birthDate ? usuario.birthDate = new Date(usuario.birthDate).toLocaleDateString("pt-BR") : usuario.birthDate}</td>
+                            </tr>
+                        `
                 })
                 console.log(valores)
                 await fetch("http://localhost:3000/usuario/lote", {

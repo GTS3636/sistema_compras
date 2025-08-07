@@ -48,6 +48,18 @@ export function loteProduto() {
                         thumbnail: produto.thumbnail
                     }
                     valores.push(dadosProduto)
+                    res.querySelector("#tbodyProdutos").innerHTML += `
+                            <tr>
+                                <td>${produto.title}</td>
+                                <td>${produto.description}</td>
+                                <td>${produto.category}</td>
+                                <td>R$ ${produto.price.toFixed(2)}</td>
+                                <td>${produto.discountPercentage ? produto.discountPercentage + "%" : "Não possui desconto"}</td>
+                                <td>${produto.stock}</td>
+                                <td>${produto.brand || "Sem marca registrada"}</td>
+                                <td><img src="${produto.thumbnail}" alt="${produto.thumbnail}" width="75" height="60"></td>
+                            </tr>
+                        `
                 })
                 console.log(valores)
                 await fetch("http://localhost:3000/produto/lote", {
