@@ -20,7 +20,6 @@ export function loteProduto() {
                                 <table border="1">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Título</th>
                                         <th>Descrição</th>
                                         <th>Categoria</th>
@@ -80,7 +79,7 @@ export function loteProduto() {
                                             <td>${prod.titulo}</td>
                                             <td>${prod.descricao}</td>
                                             <td>${prod.categoria}</td>
-                                            <td>R$ ${prod.preco.toFixed(2)}</td>
+                                            <td>R$ ${prod.preco}</td>
                                             <td>${prod.percentualDesconto ? parseFloat(prod.percentualDesconto) + "%" : "Não possui desconto"}</td>
                                             <td>${parseInt(prod.estoque)}</td>
                                             <td>${prod.marca || "Sem marca registrada"}</td>
@@ -90,7 +89,6 @@ export function loteProduto() {
                     })
                     .catch((err) => {
                         console.error("Erro ao cadastrar lote de produtos:", err)
-                        alert("Erro ao cadastrar lote de produtos. Verifique os dados e tente novamente.")
                     })
                     .finally(() => {
                         cadastrarLote.textContent = "Cadastrar Lote"
