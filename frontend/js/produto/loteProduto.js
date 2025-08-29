@@ -72,21 +72,6 @@ export function loteProduto() {
                         if (!resp.ok) throw new Error("Erro ao receber a resposta no cadastrar lote")
                         return resp.json()
                     })
-                    .then(prod => {
-                        res.querySelector("#tbodyProdutos").innerHTML += `
-                                        <tr>
-                                            <td>${prod.id}</td>
-                                            <td>${prod.titulo}</td>
-                                            <td>${prod.descricao}</td>
-                                            <td>${prod.categoria}</td>
-                                            <td>R$ ${prod.preco}</td>
-                                            <td>${prod.percentualDesconto ? parseFloat(prod.percentualDesconto) + "%" : "Não possui desconto"}</td>
-                                            <td>${parseInt(prod.estoque)}</td>
-                                            <td>${prod.marca || "Sem marca registrada"}</td>
-                                            <td><img src="${prod.thumbnail}" alt="${prod.thumbnail}" width="75" height="60"></td>
-                                        </tr>
-                                    `
-                    })
                     .catch((err) => {
                         console.error("Erro ao cadastrar lote de produtos:", err)
                     })
