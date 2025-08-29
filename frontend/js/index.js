@@ -107,8 +107,8 @@ function controleMenu() {
                     <label for="marca">Digite a marca do produto: </label>
                     <input type="text" id="marca" placeholder="Marca do Produto" required>
                     
-                    <label for="thumbnail">Digite o link da thumbnail do produto: </label>
-                    <input type="text" id="thumbnail" placeholder="Thumbnail do Produto" required>
+                    <label for="thumbnail">Selecione uma imagem do seu computador para a thumbnail do produto: </label>
+                    <input type="file" id="thumbnail" placeholder="Thumbnail do Produto" required>
 
                     <button id="cadastroProduto">Cadastrar</button><br>
                 </form>

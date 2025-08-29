@@ -14,7 +14,12 @@ export function cadastrarProduto() {
         let percentualDesconto = parseFloat(document.getElementById("percetualDesconto").value)
         let estoque = parseInt(document.getElementById("estoque").value)
         let marca = document.getElementById("marca").value
-        let thumbnail = document.getElementById("thumbnail").files[0]
+        let thumbnail = document.getElementById("thumbnail").value ? document.getElementById("thumbnail").files[0] : null
+
+        if (!titulo || !descricao || !categoria || isNaN(preco) || isNaN(estoque)) {
+            alert("Por favor, preencha todos os campos obrigatórios corretamente.")
+            return
+        }
 
         const valores = {
             titulo: titulo,
